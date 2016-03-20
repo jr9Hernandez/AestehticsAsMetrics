@@ -29,7 +29,7 @@ import dk.itu.mario.level.generator.CustomizedLevelGenerator;
 import dk.itu.mario.engine.Play;
 import dk.itu.mario.res.ResourcesManager;
 
-	public class LevelSceneTest extends LevelScene{
+	public class LevelSceneTest extends LevelScene{ 
 
 			ArrayList<Double> switchPoints;
 			private double thresshold; //how large the distance from point to mario should be before switching
