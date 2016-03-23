@@ -14,6 +14,7 @@ public class Leniency extends Metrics  {
 	
 	@Override
 	public double compute() {
+		
 		countOtherElements(level.getMap());
 		countEnemies(level.getMap());
 

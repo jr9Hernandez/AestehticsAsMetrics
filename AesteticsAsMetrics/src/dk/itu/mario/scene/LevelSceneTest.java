@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import br.ufv.dpi.labeledlevels.LabeledLevel;
+import br.ufv.dpi.metrics.ComputeMetrics;
+import br.ufv.dpi.metrics.Metrics;
 import dk.itu.mario.level.BgLevelGenerator;
 import dk.itu.mario.MarioInterface.GamePlay;
 import dk.itu.mario.engine.sonar.FixedSoundSource;
@@ -16,7 +18,6 @@ import dk.itu.mario.engine.sprites.Mushroom;
 import dk.itu.mario.engine.sprites.Particle;
 import dk.itu.mario.engine.sprites.Sprite;
 import dk.itu.mario.engine.util.FileHandler;
-
 import dk.itu.mario.engine.Art;
 import dk.itu.mario.engine.BgRenderer;
 import dk.itu.mario.engine.DataRecorder;
@@ -62,11 +63,22 @@ import dk.itu.mario.res.ResourcesManager;
 		        		//gp = gp.read("player.txt");
 		        		//currentLevel = (Level)clg.generateLevel(gp);
 		        		
-		        		LabeledLevel labeledLevel = new LabeledLevel("tela971");
-		        		System.out.println("Visual Aesthetics: " + labeledLevel.getVisualAesthetics());
-		        		System.out.println("Difficulty: " + labeledLevel.getDifficulty());
-		        		System.out.println("Fun: " + labeledLevel.getFun());
+		        		LabeledLevel labeledLevel = new LabeledLevel("tela6");
+		        		//System.out.println("Visual Aesthetics: " + labeledLevel.getVisualAesthetics());
+		        		//System.out.println("Difficulty: " + labeledLevel.getDifficulty());
+		        		//System.out.println("Fun: " + labeledLevel.getFun());
 		        		currentLevel = labeledLevel.getLevel();
+		        		
+		        		//you can use the next commands to calculate metrics
+		        		
+					    //currentLevel = LevelGenerator.createLevel(320, 15, levelSeed, levelDifficulty, levelType);
+		        		ComputeMetrics m = new ComputeMetrics();
+		        		m.computeSingle("tela6");
+		        		m.printMetrics();
+						//objMetrics.MetricsCalc(1,currentLevel);
+						//objMetrics.MetricsCalc(2,currentLevel);
+						//objMetrics.MetricsCalc(3,currentLevel);
+						//objMetrics.MetricsCalc(4,currentLevel);
 		        		
 		        		//You can use the following commands if you want to benefit from
 		        		//	the interface containing detailed information

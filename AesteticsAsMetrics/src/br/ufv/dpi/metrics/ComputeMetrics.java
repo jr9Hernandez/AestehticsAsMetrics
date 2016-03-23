@@ -15,6 +15,46 @@ public class ComputeMetrics {
 	private ArrayList<Double> linearityValues = new ArrayList<Double>();
 	private ArrayList<Double> densityValues = new ArrayList<Double>();
 //	private ArrayList<Double> distanceValues = new ArrayList<Double>();
+
+	public void computeSingle(String tela) {
+
+		File folder = new File(tela);
+		//String files[] = folder.list();
+
+		
+		//for (int i = 0; i < files.length; i++) {
+			LabeledLevel labeledLevel = new LabeledLevel(tela);
+			labeledLevels.add(labeledLevel);
+		//}
+		
+		//for (LabeledLevel labeledLevel : labeledLevels) {
+			Level level = labeledLevel.getLevel();
+
+			Metrics leniency = new Leniency(level.getWidth(), level.getHeight(), level);
+			Metrics linearity = new Linearity(level.getWidth(), level.getHeight(), level);
+			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
+
+			leniencyValues.add(leniency.compute());
+			linearityValues.add(linearity.compute());
+			densityValues.add(density.compute());
+		//}
+		
+		//leniencyValues = normalize(leniencyValues);
+		//linearityValues = normalize(linearityValues);
+		//densityValues = normalize(densityValues);
+		
+/*
+		for (LabeledLevel labeledLevel1 : labeledLevels) {
+			Level level1 = labeledLevel1.getLevel();
+			for (LabeledLevel labeledLevel2 : labeledLevels) {
+				Level level2 = labeledLevel2.getLevel();
+				Metrics distance = new CompressionDistance(level1.getWidth(), level1.getHeight(), level1);
+				distanceValues.add(distance.compute(level2));
+			}
+		}
+	*/			
+	//	System.out.println("Total number of labeled levels: " + labeledLevels.size());
+	}
 	
 	public void compute() {
 
