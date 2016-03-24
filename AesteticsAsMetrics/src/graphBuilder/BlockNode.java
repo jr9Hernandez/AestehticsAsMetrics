@@ -1,5 +1,7 @@
 package graphBuilder;
 
+import beauty.Elements;
+
 public class BlockNode {
 
 	private int typeElement;
@@ -7,12 +9,20 @@ public class BlockNode {
 	private int x;
 	private int y;
 	private int idElement;
+	private Elements element;
 	public BlockNode(int x,int y, int id, int idElementToPlace, int idElement){
 		this.x=x;
 		this.y=y;
 		this.id=id;
 		this.typeElement=idElementToPlace;
 		this.idElement=idElement;
+	};
+	public BlockNode(int x,int y, int id, int idElementToPlace, Elements element){
+		this.x=x;
+		this.y=y;
+		this.id=id;
+		this.typeElement=idElementToPlace;
+		this.element=element;
 	};
 	public BlockNode(BlockNode obj2)
 	{
@@ -48,5 +58,8 @@ public class BlockNode {
 	}
 	public int getIdElement() {
 		return idElement;
+	}
+	public Elements getElement() {
+		return element;
 	}
 }

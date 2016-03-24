@@ -15,6 +15,7 @@ public class ComputeMetrics {
 	private ArrayList<Double> linearityValues = new ArrayList<Double>();
 	private ArrayList<Double> densityValues = new ArrayList<Double>();
 //	private ArrayList<Double> distanceValues = new ArrayList<Double>();
+	private ArrayList<Double> symmetryValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -33,10 +34,13 @@ public class ComputeMetrics {
 			Metrics leniency = new Leniency(level.getWidth(), level.getHeight(), level);
 			Metrics linearity = new Linearity(level.getWidth(), level.getHeight(), level);
 			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
+			Metrics symmetry = new Symmetry(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
+			symmetryValues.add(symmetry.compute());
+			
 		//}
 		
 		//leniencyValues = normalize(leniencyValues);
@@ -97,10 +101,10 @@ public class ComputeMetrics {
 	}
 	
 	public void printMetrics() {
-		System.out.println("Printing Metrics: Leniency, Linearity, and Density");
+		System.out.println("Printing Metrics: Leniency, Linearity, Density and symmetry");
 		for(int i = 0; i < leniencyValues.size(); i++) {
 			System.out.println(leniencyValues.get(i) + "," + linearityValues.get(i) + "," 
-		+ densityValues.get(i));
+		+ densityValues.get(i) + "," + symmetryValues.get(i));
 		}
 	}
 	
