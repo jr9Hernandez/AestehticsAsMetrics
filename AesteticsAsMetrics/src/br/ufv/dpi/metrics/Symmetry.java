@@ -36,12 +36,12 @@ public class Symmetry extends Metrics  {
 		yCenterMassGeneral=objCenterOfMass.getY();
 		
 		//calculation of symmetry
-		//System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
+		System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
 		double symmetryValue=symettry1(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
 		//System.out.println("Symmetry "+symmetryValue);
 		
 		//testing the captured elements
-		/*Iterator<BlockNode> it = elementsSelected.iterator();
+		Iterator<BlockNode> it = elementsSelected.iterator();
 		while(it.hasNext()){
 			BlockNode elemento = it.next();
 			
@@ -52,7 +52,7 @@ public class Symmetry extends Metrics  {
 	        int typeElement=(elemento.getElement()).getTypeElem();
 	        
 	        System.out.println("type "+typeElement+" x "+xInitial+" y "+yInitial+" widthElement "+widthElement+ " heigthElement "+heigthElement);
-		}*/
+		}
 		return symmetryValue;
 	}
 	
@@ -121,7 +121,7 @@ public class Symmetry extends Metrics  {
 			int xInitial = elemento.getX();
 	        int yInitial= elemento.getY();
 	        widthElement=element.getWidth();
-	        heigthElement=element.getHeigth()+1;
+	        heigthElement=element.getHeigth();
 	        
 	        if((xInitial+widthElement)<=xCenterMassGeneral )
 	        {
@@ -433,7 +433,7 @@ public class Symmetry extends Metrics  {
 			int xInitial = elemento.getX();
 	        int yInitial= elemento.getY();
 	        widthElement=element.getWidth();
-	        heigthElement=element.getHeigth()+1;
+	        heigthElement=element.getHeigth();
 	        
 	        if((xInitial+widthElement)<=xCenterMassGeneral )
 	        {
@@ -680,10 +680,10 @@ public class Symmetry extends Metrics  {
 	        
 		
 		}
-		//System.out.println("gulAT "+gulATG[0]+" "+gulATG[1]+" "+gulATG[2]+" "+gulATG[3]);
-		//System.out.println("gurAT "+gurATG[0]+" "+gurATG[1]+" "+gurATG[2]+" "+gurATG[3]);
-		//System.out.println("gllAT "+gllATG[0]+" "+gllATG[1]+" "+gllATG[2]+" "+gllATG[3]);
-		//System.out.println("glrAT "+glrATG[0]+" "+glrATG[1]+" "+glrATG[2]+" "+glrATG[3]);
+		System.out.println("gulAT "+gulATG[0]+" "+gulATG[1]+" "+gulATG[2]+" "+gulATG[3]);
+		System.out.println("gurAT "+gurATG[0]+" "+gurATG[1]+" "+gurATG[2]+" "+gurATG[3]);
+		System.out.println("gllAT "+gllATG[0]+" "+gllATG[1]+" "+gllATG[2]+" "+gllATG[3]);
+		System.out.println("glrAT "+glrATG[0]+" "+glrATG[1]+" "+glrATG[2]+" "+glrATG[3]);
 		symmetryValueGeneral=SubstractionSymmetries(gulATG,gllATG)+SubstractionSymmetries(gurATG,glrATG)+SubstractionSymmetries(gulATG,gurATG)+SubstractionSymmetries(gllATG,glrATG)+SubstractionSymmetries(gulATG,glrATG)+SubstractionSymmetries(gurATG,gllATG);
 		//symmetryValueGeneral=SubstractionSymmetries(gulATG,gurATG)+SubstractionSymmetries(gllATG,glrATG);
 		//System.out.println("symmetryValue "+symmetryValueGeneral);
