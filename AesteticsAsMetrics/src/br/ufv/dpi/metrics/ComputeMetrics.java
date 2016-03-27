@@ -36,6 +36,7 @@ public class ComputeMetrics {
 			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
 			Metrics symmetry = new Symmetry(level.getWidth(), level.getHeight(), level);
 
+			
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
@@ -77,15 +78,18 @@ public class ComputeMetrics {
 			Metrics leniency = new Leniency(level.getWidth(), level.getHeight(), level);
 			Metrics linearity = new Linearity(level.getWidth(), level.getHeight(), level);
 			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
+			Metrics symmetry = new Symmetry(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
+			symmetryValues.add(symmetry.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
 		linearityValues = normalize(linearityValues);
 		densityValues = normalize(densityValues);
+		symmetryValues=normalize(symmetryValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
@@ -102,16 +106,30 @@ public class ComputeMetrics {
 	
 	public void printMetrics() {
 		System.out.println("Printing Metrics: Leniency, Linearity, Density and symmetry");
-		for(int i = 0; i < leniencyValues.size(); i++) {
+		/*for(int i = 0; i < leniencyValues.size(); i++) {
 			System.out.println(leniencyValues.get(i) + "," + linearityValues.get(i) + "," 
 		+ densityValues.get(i) + "," + symmetryValues.get(i));
+		}*/
+		int i=0;
+		for(LabeledLevel level : labeledLevels) {
+
+			System.out.println(level.getVisualAesthetics()+","+symmetryValues.get(i));
+			i++;
+			
+			
 		}
 	}
 	
 	public void printLabels() {
 		System.out.println("Printing Labels: Fun, Visual Aesthetics, and Difficulty");
-		for (LabeledLevel level : labeledLevels) {
+		/*for (LabeledLevel level : labeledLevels) {
 			System.out.println(level.getFun() + "," + level.getVisualAesthetics() + "," + level.getDifficulty());
+		}*/
+		for (LabeledLevel level : labeledLevels) {
+			if(level.getVisualAesthetics()<8)
+			{
+				System.out.println(level.getVisualAesthetics());
+			}
 		}
 	}
 	

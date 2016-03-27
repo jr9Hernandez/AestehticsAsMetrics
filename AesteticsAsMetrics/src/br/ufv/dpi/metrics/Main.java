@@ -6,7 +6,7 @@ public class Main {
 		ComputeMetrics m = new ComputeMetrics();
 		m.compute();
 		m.printMetrics();
-		m.printLabels();
+		//m.printLabels();
 	}
 	
 }
