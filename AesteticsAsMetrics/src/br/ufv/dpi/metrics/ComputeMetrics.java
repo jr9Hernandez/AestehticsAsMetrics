@@ -16,6 +16,7 @@ public class ComputeMetrics {
 	private ArrayList<Double> densityValues = new ArrayList<Double>();
 //	private ArrayList<Double> distanceValues = new ArrayList<Double>();
 	private ArrayList<Double> symmetryValues = new ArrayList<Double>();
+	private ArrayList<Double> numobjectsValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -35,12 +36,14 @@ public class ComputeMetrics {
 			Metrics linearity = new Linearity(level.getWidth(), level.getHeight(), level);
 			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
 			Metrics symmetry = new Symmetry(level.getWidth(), level.getHeight(), level);
+			Metrics numobjects = new Numobjects(level.getWidth(), level.getHeight(), level);
 
 			
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
 			symmetryValues.add(symmetry.compute());
+			numobjectsValues.add(numobjects.compute());
 			
 		//}
 		
@@ -79,17 +82,20 @@ public class ComputeMetrics {
 			Metrics linearity = new Linearity(level.getWidth(), level.getHeight(), level);
 			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
 			Metrics symmetry = new Symmetry(level.getWidth(), level.getHeight(), level);
+			Metrics numobjects = new Numobjects(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
 			symmetryValues.add(symmetry.compute());
+			numobjectsValues.add(numobjects.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
 		linearityValues = normalize(linearityValues);
 		densityValues = normalize(densityValues);
 		symmetryValues=normalize(symmetryValues);
+		//numobjectsValues=normalize(numobjectsValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
@@ -114,8 +120,7 @@ public class ComputeMetrics {
 		for(LabeledLevel level : labeledLevels) {
 
 			System.out.println(level.getVisualAesthetics()+","+symmetryValues.get(i));
-			i++;
-			
+			i++;			
 			
 		}
 	}

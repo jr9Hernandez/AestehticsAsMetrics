@@ -37,7 +37,7 @@ public class Symmetry extends Metrics  {
 		
 		//calculation of symmetry
 		//System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
-		double symmetryValue=symettry1Vertical(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
+		double symmetryValue=symettry1(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
 		//System.out.println("Symmetry "+symmetryValue);
 		
 		//testing the captured elements
