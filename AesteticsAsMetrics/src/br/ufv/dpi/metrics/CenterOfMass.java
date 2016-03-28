@@ -59,9 +59,9 @@ public class CenterOfMass {
 		}
 		//System.out.println("summatoryAreasYG "+summatoryAreasG);
 		x=summatoryAreasXG/summatoryAreasG;
-        //y=summatoryAreasYG/summatoryAreasG;
+        y=summatoryAreasYG/summatoryAreasG;
 		//x=20.0;
-		y=6.0;
+		//y=6.0;
         
 		
 	}
