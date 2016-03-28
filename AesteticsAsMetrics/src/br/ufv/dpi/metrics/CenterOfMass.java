@@ -65,7 +65,7 @@ public class CenterOfMass {
 
         //for symmetry
         //x=summatoryAreasXG/summatoryAreasG;
-		//y=7.0;
+		//y=6.0;
         
 		
 	}
