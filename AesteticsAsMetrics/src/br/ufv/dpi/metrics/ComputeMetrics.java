@@ -131,10 +131,16 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 
-			System.out.println(level.getVisualAesthetics()+","+equilibriumValues.get(i));
+			System.out.println(level.getDifficulty()+","+balanceValues.get(i));
 			i++;			
 			
 		}
+		/*for(LabeledLevel level : labeledLevels) {
+			double temp=symmetryValues.get(i)*1.428+3.326;
+			System.out.println(level.getVisualAesthetics()+","+temp);
+			i++;			
+			
+		}*/
 	}
 	
 	public void printLabels() {
