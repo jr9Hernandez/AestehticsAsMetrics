@@ -118,7 +118,7 @@ public class Balance extends Metrics  {
 		double heigthElement=0;
 		double x,y;
 		
-		//Symmetry General
+		//Balance General
 		Iterator<BlockNode> itSymmetry1 = states.iterator();
 		while(itSymmetry1.hasNext()){
 			BlockNode elemento = itSymmetry1.next();
@@ -224,8 +224,8 @@ public class Balance extends Metrics  {
 		System.out.println("glrAT "+glrATG[0]+" "+glrATG[1]+" "+glrATG[2]+" "+glrATG[3]);*/
 		balanceValueLeft=gulATG[3]+gllATG[3];
 		balanceValueRight=gurATG[3]+glrATG[3];
-		balanceValueUp=gulATG[3]+gurATG[3];
-		balanceValueLow=gllATG[3]+glrATG[3];
+		balanceValueUp=gulATG[4]+gurATG[4];
+		balanceValueLow=gllATG[4]+glrATG[4];
 		
 		balanceVertical=Math.abs(balanceValueLeft-balanceValueRight);
 		balanceHorizontal=Math.abs(balanceValueUp-balanceValueLow);

@@ -17,6 +17,7 @@ public class ComputeMetrics {
 //	private ArrayList<Double> distanceValues = new ArrayList<Double>();
 	private ArrayList<Double> symmetryValues = new ArrayList<Double>();
 	private ArrayList<Double> numobjectsValues = new ArrayList<Double>();
+	private ArrayList<Double> balanceValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -37,6 +38,7 @@ public class ComputeMetrics {
 			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
 			Metrics symmetry = new Symmetry(level.getWidth(), level.getHeight(), level);
 			Metrics numobjects = new Numobjects(level.getWidth(), level.getHeight(), level);
+			Metrics balance = new Balance(level.getWidth(), level.getHeight(), level);
 
 			
 			leniencyValues.add(leniency.compute());
@@ -44,6 +46,7 @@ public class ComputeMetrics {
 			densityValues.add(density.compute());
 			symmetryValues.add(symmetry.compute());
 			numobjectsValues.add(numobjects.compute());
+			balanceValues.add(balance.compute());
 			
 		//}
 		
@@ -83,18 +86,21 @@ public class ComputeMetrics {
 			Metrics density = new Density(level.getWidth(), level.getHeight(), level);
 			Metrics symmetry = new Symmetry(level.getWidth(), level.getHeight(), level);
 			Metrics numobjects = new Numobjects(level.getWidth(), level.getHeight(), level);
+			Metrics balance = new Balance(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
 			symmetryValues.add(symmetry.compute());
 			numobjectsValues.add(numobjects.compute());
+			balanceValues.add(balance.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
 		linearityValues = normalize(linearityValues);
 		densityValues = normalize(densityValues);
 		symmetryValues=normalize(symmetryValues);
+		balanceValues=normalize(balanceValues);
 		//numobjectsValues=normalize(numobjectsValues);
 		
 /*
@@ -119,7 +125,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 
-			System.out.println(level.getVisualAesthetics()+","+symmetryValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+balanceValues.get(i));
 			i++;			
 			
 		}
