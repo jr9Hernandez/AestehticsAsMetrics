@@ -24,7 +24,6 @@ public class Balance extends Metrics  {
 	
 	@Override
 	public double compute() {
-		
 		//calculation of scanning of level
 		ScanLabeledLevel objScanLevel=new ScanLabeledLevel(level,width, height );
 		elementsSelected=objScanLevel.DeterminePositions();

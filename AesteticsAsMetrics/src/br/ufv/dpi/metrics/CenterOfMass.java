@@ -60,12 +60,16 @@ public class CenterOfMass {
 		//System.out.println("summatoryAreasYG "+summatoryAreasG);
 		
 		//for balance
-        y=6.0;
-        x=20;
+        //y=6.0;
+        //x=20;
 
         //for symmetry
         //x=summatoryAreasXG/summatoryAreasG;
 		//y=6.0;
+		
+		//for equilibrium
+		x=summatoryAreasXG/summatoryAreasG;
+		y=summatoryAreasYG/summatoryAreasG;
         
 		
 	}

@@ -63,7 +63,7 @@ import dk.itu.mario.res.ResourcesManager;
 		        		//gp = gp.read("player.txt");
 		        		//currentLevel = (Level)clg.generateLevel(gp);
 		        		
-		        		LabeledLevel labeledLevel = new LabeledLevel("tela4");
+		        		LabeledLevel labeledLevel = new LabeledLevel("tela8");
 		        		System.out.println("Visual Aesthetics: " + labeledLevel.getVisualAesthetics());
 		        		//System.out.println("Difficulty: " + labeledLevel.getDifficulty());
 		        		//System.out.println("Fun: " + labeledLevel.getFun());
