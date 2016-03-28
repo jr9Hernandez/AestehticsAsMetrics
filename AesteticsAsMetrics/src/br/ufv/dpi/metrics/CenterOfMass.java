@@ -61,7 +61,7 @@ public class CenterOfMass {
 		
 		//for balance
         y=6.0;
-        x=18;
+        x=20;
 
         //for symmetry
         //x=summatoryAreasXG/summatoryAreasG;
