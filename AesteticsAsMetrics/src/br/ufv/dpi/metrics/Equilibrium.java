@@ -37,8 +37,8 @@ public class Equilibrium extends Metrics  {
 		
 		//calculation of equilibrium
 		
-		System.out.println("xCenterMassGeneral "+xCenterMassGeneral);
-		System.out.println("yCenterMassGeneral "+yCenterMassGeneral);
+		System.out.println("xCenterMassGeneralEqu "+xCenterMassGeneral);
+		System.out.println("yCenterMassGeneralEqu "+yCenterMassGeneral);
 		double xEquilibrium=Math.abs(xCenterMassGeneral-20);
 		double yEquilibrium=Math.abs(yCenterMassGeneral-6);
 		

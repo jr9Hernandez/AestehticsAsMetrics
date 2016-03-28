@@ -64,12 +64,12 @@ public class CenterOfMass {
         //x=20;
 
         //for symmetry
-        //x=summatoryAreasXG/summatoryAreasG;
-		//y=6.0;
+        x=summatoryAreasXG/summatoryAreasG;
+		y=6.0;
 		
 		//for equilibrium
-		x=summatoryAreasXG/summatoryAreasG;
-		y=summatoryAreasYG/summatoryAreasG;
+		//x=summatoryAreasXG/summatoryAreasG;
+		//y=summatoryAreasYG/summatoryAreasG;
         
 		
 	}
