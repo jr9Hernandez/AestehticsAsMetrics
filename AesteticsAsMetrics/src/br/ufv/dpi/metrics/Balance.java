@@ -200,10 +200,8 @@ public class Balance extends Metrics  {
 	        		glrATG[0]=glrATG[0]+glrAG[0];
 	        		glrAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		glrATG[1]=glrATG[1]+glrAG[1];
-	        		glrAG[2]=widthElement;
+	        		glrAG[2]=widthElement*heigthElement;
 	        		glrATG[2]=glrATG[2]+glrAG[2];
-	        		glrAG[3]=heigthElement;
-	        		glrATG[3]=glrATG[3]+glrAG[3];
 	        		
 	        		glrAG[3]=(glrAG[2]*glrAG[0]);
 	        		glrATG[3]=glrATG[3]+glrAG[3];
@@ -227,10 +225,20 @@ public class Balance extends Metrics  {
 		balanceValueUp=gulATG[4]+gurATG[4];
 		balanceValueLow=gllATG[4]+glrATG[4];
 		
+		System.out.println("balanceValueLeft "+balanceValueLeft);
+		System.out.println("balanceValueRight "+balanceValueRight);
+		System.out.println("balanceValueUp "+balanceValueUp);
+		System.out.println("balanceValueLow "+balanceValueLow);
+		
 		balanceVertical=Math.abs(balanceValueLeft-balanceValueRight);
 		balanceHorizontal=Math.abs(balanceValueUp-balanceValueLow);
 		
+		System.out.println("balanceVertical "+balanceVertical);
+		System.out.println("balanceHorizontal "+balanceHorizontal);
+		
 		balanceValueGeneral=balanceVertical+balanceHorizontal;
+		
+		System.out.println("balanceValueGeneral "+balanceValueGeneral);
 		//symmetryValueGeneral=SubstractionSymmetries(gulATG,gurATG)+SubstractionSymmetries(gllATG,glrATG);
 		//System.out.println("symmetryValue "+symmetryValueGeneral);
 		
