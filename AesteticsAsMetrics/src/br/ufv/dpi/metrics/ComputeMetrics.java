@@ -19,6 +19,7 @@ public class ComputeMetrics {
 	private ArrayList<Double> numobjectsValues = new ArrayList<Double>();
 	private ArrayList<Double> balanceValues = new ArrayList<Double>();
 	private ArrayList<Double> equilibriumValues = new ArrayList<Double>();
+	private ArrayList<Double> reacheabilityValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -41,6 +42,7 @@ public class ComputeMetrics {
 			Metrics numobjects = new Numobjects(level.getWidth(), level.getHeight(), level);
 			Metrics balance = new Balance(level.getWidth(), level.getHeight(), level);
 			Metrics equilibrium = new Equilibrium(level.getWidth(), level.getHeight(), level);
+			Metrics reacheability = new Reacheability(level.getWidth(), level.getHeight(), level);
 
 			
 			leniencyValues.add(leniency.compute());
@@ -50,6 +52,7 @@ public class ComputeMetrics {
 			numobjectsValues.add(numobjects.compute());
 			balanceValues.add(balance.compute());
 			equilibriumValues.add(equilibrium.compute());
+			reacheabilityValues.add(reacheability.compute());
 			
 		//}
 		
@@ -91,6 +94,7 @@ public class ComputeMetrics {
 			Metrics numobjects = new Numobjects(level.getWidth(), level.getHeight(), level);
 			Metrics balance = new Balance(level.getWidth(), level.getHeight(), level);
 			Metrics equilibrium = new Equilibrium(level.getWidth(), level.getHeight(), level);
+			Metrics reacheability = new Reacheability(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
@@ -99,6 +103,7 @@ public class ComputeMetrics {
 			numobjectsValues.add(numobjects.compute());
 			balanceValues.add(balance.compute());
 			equilibriumValues.add(equilibrium.compute());
+			reacheabilityValues.add(reacheability.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
@@ -107,6 +112,7 @@ public class ComputeMetrics {
 		symmetryValues=normalize(symmetryValues);
 		balanceValues=normalize(balanceValues);
 		equilibriumValues=normalize(equilibriumValues);
+		//reacheabilityValues=normalize(reacheabilityValues);
 		//numobjectsValues=normalize(numobjectsValues);
 		
 /*
@@ -131,7 +137,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 
-			System.out.println(level.getDifficulty()+","+balanceValues.get(i));
+			System.out.println(level.getFun()+","+reacheabilityValues.get(i));
 			i++;			
 			
 		}
