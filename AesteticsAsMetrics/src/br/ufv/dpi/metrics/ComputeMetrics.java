@@ -135,7 +135,7 @@ public class ComputeMetrics {
 		+ densityValues.get(i) + "," + symmetryValues.get(i));
 		}*/
 		int i=0;
-		for(LabeledLevel level : labeledLevels) { 
+		for(LabeledLevel level : labeledLevels) {
 
 			System.out.println(level.getFun()+","+reacheabilityValues.get(i));
 			i++;			
