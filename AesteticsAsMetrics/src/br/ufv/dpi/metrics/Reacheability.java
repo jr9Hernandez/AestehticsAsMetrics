@@ -74,7 +74,7 @@ public class Reacheability extends Metrics {
 
 	public boolean ValidateBottomBlocks(int idElemento, int xInitial, int yInitial,int widthElement, int heigthElement, int typeElement) {
 
-		for (int i = xInitial - 5; i < (xInitial + widthElement + 5 - 1); i++) {
+		for (int i = xInitial - 10; i < (xInitial + widthElement + 10 - 1); i++) {
 			if (i < 0 && i > 14) {
 				continue;
 			} else {
@@ -85,15 +85,51 @@ public class Reacheability extends Metrics {
 					
 				} else if (i > (xInitial + widthElement - 1)) {
 					jndex = jndex - (i - (xInitial + widthElement - 1)-1);
-				} else {
+				}
+				else if((i<xInitial - 5) || (i>=xInitial + widthElement + 5 - 1)){
+					jini=0;
+					jndex=1;
+				}
+				else {
 					jini = heigthElement;
 					
 				}
 				int y = yInitial - heigthElement + 1;
-				System.out.println("y jini jndex"+y+jini+jndex);
 				for (int j = y + jini; j < (y + jini + jndex); j++) {
 					if (mapLevel[i][j] != (byte) (0)) {
-						System.out.println("xdfdfdsfi j "+i+" "+j);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean ValidateJump(int idElemento, int xInitial, int yInitial,int widthElement, int heigthElement, int typeElement) {
+
+		for (int i = xInitial - 10; i < (xInitial + widthElement + 10 - 1); i++) {
+			if (i < 0 && i > 14) {
+				continue;
+			} else {
+				int jndex = 4;
+				int jini = 0;
+				if (i < xInitial ) {
+					jndex = jndex - (xInitial - i - 1);
+					
+				} else if (i > (xInitial + widthElement - 1)) {
+					jndex = jndex - (i - (xInitial + widthElement - 1)-1);
+				}
+				else if((i<xInitial - 5) || (i>=xInitial + widthElement + 5 - 1)){
+					jini=0;
+					jndex=1;
+				}
+				else {
+					continue;
+					
+				}
+				int y = yInitial - heigthElement + 1;
+				for (int j = y + jini; j < (y + jini + jndex); j++) {
+					if (mapLevel[i][j] != (byte) (0)) {
 						return true;
 					}
 				}
@@ -120,10 +156,8 @@ public class Reacheability extends Metrics {
 					
 				}
 				int y = yInitial - heigthElement + 1;
-				System.out.println("y jini jndex"+y+jini+jndex);
 				for (int j = y + jini; j < (y + jini + jndex); j++) {
 					if (mapLevel[i][j] != (byte) (0)) {
-						System.out.println("xdfdfdsfi j "+i+" "+j);
 						return true;
 					}
 				}
