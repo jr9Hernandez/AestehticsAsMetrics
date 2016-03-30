@@ -35,6 +35,7 @@ public class Reacheability extends Metrics {
 
 		// testing the captured elements
 		double totalUnreacheable = 0;
+		double totalUnreacheableFloating = 0;
 		Iterator<BlockNode> it = elementsSelected.iterator();
 		while (it.hasNext()) {
 			BlockNode elemento = it.next();
@@ -48,14 +49,14 @@ public class Reacheability extends Metrics {
 
 			boolean validateBottom =true;
 			if (typeElement != 0) {
-				
-				if(typeElement==8)
+
+				if(typeElement==8 || typeElement==2)
 				{
-				validateBottom = ValidateBottomBlocks(idElemento, xInitial,yInitial, widthElement, heigthElement, typeElement);
+					validateBottom = ValidateBottomBlocks(idElemento, xInitial,yInitial, widthElement, heigthElement, typeElement);
 				}
 				else
 				{
-				validateBottom = ValidateBottom(idElemento, xInitial,yInitial, widthElement, heigthElement, typeElement);
+					validateBottom = ValidateBottom(idElemento, xInitial,yInitial, widthElement, heigthElement, typeElement);
 				}
 				if (validateBottom == false) {
 					totalUnreacheable = totalUnreacheable + 1;
@@ -66,106 +67,152 @@ public class Reacheability extends Metrics {
 			// " heigthElement "+heigthElement);
 		}
 
+		if(totalUnreacheable==0)
+		{
+
+			boolean validateAllFloatingElements = ValidateAllFloatingElements();				
+			/*if (validateAllFloatingElements==false)
+			{
+				totalUnreacheable=countFloatingElements();
+			}*/
+
+		}
 		double percentUnreachables = totalUnreacheable
 				/ ((double) elementsSelected.size());
 
 		return percentUnreachables;
 	}
 
-	public boolean ValidateBottomBlocks(int idElemento, int xInitial, int yInitial,int widthElement, int heigthElement, int typeElement) {
+	public int countFloatingElements()
+	{
+		int counter=0;
+		Iterator<BlockNode> it = elementsSelected.iterator();
+		while (it.hasNext()) {
+			BlockNode elemento = it.next();
+			if (elemento.getType()==7 || elemento.getType()==8 || elemento.getType()==10 || elemento.getType()==11  )
+			{
+				counter++;
+			}
+		}
+		return counter;
+	}
 
-		for (int i = xInitial - 10; i < (xInitial + widthElement + 10 - 1); i++) {
-			if (i < 0 && i > 14) {
+	public boolean ValidateAllFloatingElements() {
+
+		Iterator<BlockNode> it = elementsSelected.iterator();
+		while (it.hasNext()) {
+			BlockNode elemento = it.next();
+
+			int xInitial = elemento.getX();
+			int yInitial = elemento.getY();
+			int widthElement = (elemento.getElement()).getWidth();
+			int heigthElement = (elemento.getElement()).getHeigth();
+			int typeElement = (elemento.getElement()).getTypeElem();
+			int idElemento = (elemento.getElement()).getIdElem();
+
+			if(typeElement==7 || typeElement==8 || typeElement==10 || typeElement==11)
+			{
+				System.out.println("typeElement "+" "+typeElement);
+				for (int i = xInitial-1; i <= (xInitial + widthElement- 1+1); i++) {
+					if (i < 0 && i > 14) {
+						continue;
+					} else {
+						if(i==xInitial-1 || i==(xInitial + widthElement- 1+1))
+						{
+							int jndex = 4;
+							int jini = heigthElement;
+
+
+							int y = yInitial - heigthElement + 1;
+							for (int j = y ; j < (y + jini + jndex); j++) {
+								if (mapLevel[i][j] != (byte) (0)) {
+									return true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		System.out.println("falseo");
+		return false;
+	}
+
+	public boolean ValidateBottomBlocks(int idElemento, int xInitial, int yInitial,int widthElement, int heigthElement, int typeElement) {
+		System.out.println("typeElement "+" "+typeElement);
+		for (int i = xInitial - 10; i <= (xInitial + widthElement + 10 - 1); i++) {
+			if (i < 0 || i > 30) {
 				continue;
 			} else {
-				int jndex = 4;
+				int jndex = 5;
 				int jini = 0;
-				if (i < xInitial ) {
-					jndex = jndex - (xInitial - i - 1);
-					
-				} else if (i > (xInitial + widthElement - 1)) {
-					jndex = jndex - (i - (xInitial + widthElement - 1)-1);
-				}
-				else if((i<xInitial - 5) || (i>=xInitial + widthElement + 5 - 1)){
+				if((i<xInitial - 4) || (i>=xInitial + widthElement + 4 - 1)){
 					jini=0;
 					jndex=1;
+				}
+				else if (i < xInitial ) {
+					jndex = jndex - (xInitial - i - 1);
+
+				} else if (i > (xInitial + widthElement - 1)) {
+					jndex = jndex - (i - (xInitial + widthElement - 1)-1);
 				}
 				else {
 					jini = heigthElement;
-					
+					jndex = 4;
 				}
 				int y = yInitial - heigthElement + 1;
 				for (int j = y + jini; j < (y + jini + jndex); j++) {
+					System.out.println("y jini jindex"+i +" "+ j +" ");
 					if (mapLevel[i][j] != (byte) (0)) {
 						return true;
 					}
 				}
 			}
 		}
+		System.out.println("falseo");
 		return false;
 	}
-	
-	public boolean ValidateJump(int idElemento, int xInitial, int yInitial,int widthElement, int heigthElement, int typeElement) {
 
-		for (int i = xInitial - 10; i < (xInitial + widthElement + 10 - 1); i++) {
-			if (i < 0 && i > 14) {
-				continue;
-			} else {
-				int jndex = 4;
-				int jini = 0;
-				if (i < xInitial ) {
-					jndex = jndex - (xInitial - i - 1);
-					
-				} else if (i > (xInitial + widthElement - 1)) {
-					jndex = jndex - (i - (xInitial + widthElement - 1)-1);
-				}
-				else if((i<xInitial - 5) || (i>=xInitial + widthElement + 5 - 1)){
-					jini=0;
-					jndex=1;
-				}
-				else {
-					continue;
-					
-				}
-				int y = yInitial - heigthElement + 1;
-				for (int j = y + jini; j < (y + jini + jndex); j++) {
-					if (mapLevel[i][j] != (byte) (0)) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
 
 	public boolean ValidateBottom(int idElemento, int xInitial, int yInitial,int widthElement, int heigthElement, int typeElement) {
 
-		for (int i = xInitial - 5; i < (xInitial + widthElement + 5 - 1); i++) {
-			if (i < 0 && i > 14) {
+		System.out.println("typeElement "+" "+typeElement);
+		for (int i = xInitial - 10; i <= (xInitial + widthElement + 10 - 1); i++) {
+			if (i < 0 || i > 30) {
 				continue;
 			} else {
-				int jndex = 4;
+				int jndex = 5;
 				int jini = 0;
-				if (i < xInitial ) {
+				if((i<xInitial - 4) || (i>=xInitial + widthElement + 4 - 1)){
+					jini=0;
+					jndex=1;
+				}
+				else if (i < xInitial ) {
 					jndex = jndex - (xInitial - i - 1);
-					
+
 				} else if (i > (xInitial + widthElement - 1)) {
 					jndex = jndex - (i - (xInitial + widthElement - 1)-1);
-				} else {
+				}
+
+				else {
 					continue;
-					
+
 				}
 				int y = yInitial - heigthElement + 1;
+
 				for (int j = y + jini; j < (y + jini + jndex); j++) {
+					System.out.println("y jini jindex"+i +" "+ j +" ");
 					if (mapLevel[i][j] != (byte) (0)) {
+
 						return true;
 					}
 				}
 			}
 		}
+		System.out.println("falseo");
 		return false;
 	}
-	
+
 	@Override
 	public double compute(Level toCompare) {
 		return compute();

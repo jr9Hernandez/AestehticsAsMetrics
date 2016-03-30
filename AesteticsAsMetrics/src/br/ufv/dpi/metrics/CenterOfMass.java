@@ -68,12 +68,12 @@ public class CenterOfMass {
         //x=20;
         
 		//for balance horizontal
-        y=5.0;
-        x=20;
+        //y=5.0;
+        //x=20;
 
         //for symmetry vertical
-        //x=summatoryAreasXG/summatoryAreasG;
-		//y=7.0;
+        x=summatoryAreasXG/summatoryAreasG;
+		y=7.0;
 		
 		//for symmetry all
         //x=summatoryAreasXG/summatoryAreasG;
