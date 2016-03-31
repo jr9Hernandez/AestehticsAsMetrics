@@ -137,7 +137,7 @@ public class Reacheability extends Metrics {
 	public boolean ValidateBottomBlocks(int idElemento, int xInitial, int yInitial, int widthElement, int heigthElement, int typeElement) {
 		System.out.println("typeElement " + " " + typeElement);
 		for (int i = xInitial - 9; i <= (xInitial + widthElement + 9 - 1); i++) {
-			if (i < 0 || i > 30) {
+			if (i < 0 || i > ((level.getxExit()-8))) {
 				continue;
 			} else {
 				int jndex = 5;
@@ -174,7 +174,7 @@ public class Reacheability extends Metrics {
 	public boolean ValidateBottom(int idElemento, int xInitial, int yInitial, int widthElement, int heigthElement, int typeElement) {
 		System.out.println("typeElement " + " " + typeElement);
 		for (int i = xInitial - 9; i <= (xInitial + widthElement + 9 - 1); i++) {
-			if (i < 0 || i > 30) {
+			if (i < 0 || i > ((level.getxExit()-8))) {
 				continue;
 			} else {
 				int jndex = 5;
