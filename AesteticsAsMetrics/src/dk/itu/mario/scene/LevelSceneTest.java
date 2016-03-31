@@ -63,7 +63,7 @@ import dk.itu.mario.res.ResourcesManager;
 		        		//gp = gp.read("player.txt");
 		        		//currentLevel = (Level)clg.generateLevel(gp);
 		        		
-		        		LabeledLevel labeledLevel = new LabeledLevel("tela2301");
+		        		LabeledLevel labeledLevel = new LabeledLevel("tela2335");
 		        		System.out.println("Visual Aesthetics: " + labeledLevel.getVisualAesthetics());
 		        		//System.out.println("Difficulty: " + labeledLevel.getDifficulty());
 		        		//System.out.println("Fun: " + labeledLevel.getFun());
@@ -73,7 +73,7 @@ import dk.itu.mario.res.ResourcesManager;
 		        		
 					    //currentLevel = LevelGenerator.createLevel(320, 15, levelSeed, levelDifficulty, levelType);
 		        		ComputeMetrics m = new ComputeMetrics();
-		        		m.computeSingle("tela2301");
+		        		m.computeSingle("tela2335");
 		        		m.printMetrics();
 						//objMetrics.MetricsCalc(1,currentLevel);
 						//objMetrics.MetricsCalc(2,currentLevel);
