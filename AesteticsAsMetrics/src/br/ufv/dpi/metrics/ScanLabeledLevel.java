@@ -318,7 +318,7 @@ public class ScanLabeledLevel {
 					//calculating the height
 					heightElement=3;
 					
-					buildElement(i, j+2, heightElement, widthElement,6);
+					buildElement(i, j+2, heightElement, widthElement,5);
 					
 				}
 				
