@@ -16,6 +16,7 @@ public class Reacheability extends Metrics {
 	private double xCenterMassGeneral;
 	private double yCenterMassGeneral;
 	protected byte[][] mapLevel;
+	private int[][]hotZoneElements;
 
 	public Reacheability(int width, int height, Level level) {
 
@@ -27,9 +28,9 @@ public class Reacheability extends Metrics {
 	public double compute() {
 
 		// calculation of scanning of level
-		ScanLabeledLevel objScanLevel = new ScanLabeledLevel(level, width,
-				height);
+		ScanLabeledLevel objScanLevel = new ScanLabeledLevel(level, width,height);
 		elementsSelected = objScanLevel.DeterminePositions();
+		hotZoneElements=objScanLevel.hotZones(elementsSelected);
 
 		// System.out.println("Symmetry "+symmetryValue);
 
@@ -69,10 +70,11 @@ public class Reacheability extends Metrics {
 		if (totalUnreacheable == 0) {
 
 			boolean validateAllFloatingElements = ValidateAllFloatingElements();
-			/*
-			 * if (validateAllFloatingElements==false) {
-			 * totalUnreacheable=countFloatingElements(); }
-			 */
+			if (validateAllFloatingElements==false) {
+				totalUnreacheable=countFloatingElements(); 
+				System.out.println("floatingssw "+totalUnreacheable);
+			}
+
 
 		}
 		double percentUnreachables = totalUnreacheable
@@ -86,8 +88,7 @@ public class Reacheability extends Metrics {
 		Iterator<BlockNode> it = elementsSelected.iterator();
 		while (it.hasNext()) {
 			BlockNode elemento = it.next();
-			if (elemento.getType() == 7 || elemento.getType() == 8
-					|| elemento.getType() == 10 || elemento.getType() == 11) {
+			if (elemento.getType() == 7 || elemento.getType() == 8|| elemento.getType() == 10 || elemento.getType() == 11) {
 				counter++;
 			}
 		}
@@ -95,7 +96,7 @@ public class Reacheability extends Metrics {
 	}
 
 	public boolean ValidateAllFloatingElements() {
-
+		System.out.println("validatingallelements");
 		Iterator<BlockNode> it = elementsSelected.iterator();
 		while (it.hasNext()) {
 			BlockNode elemento = it.next();
@@ -107,27 +108,40 @@ public class Reacheability extends Metrics {
 			int typeElement = (elemento.getElement()).getTypeElem();
 			int idElemento = (elemento.getElement()).getIdElem();
 
-			if (typeElement == 7 || typeElement == 8 || typeElement == 10
-					|| typeElement == 11) {
+			if (typeElement == 7 || typeElement == 8 || typeElement == 10 || typeElement == 11) {
+
 				System.out.println("typeElement " + " " + typeElement);
-				for (int i = xInitial - 1; i <= (xInitial + widthElement - 1 + 1); i++) {
-					if (i < 0 && i > 14) {
+				for (int i = xInitial - 9; i <= (xInitial + widthElement + 9 - 1); i++) {
+					if (i < 0 || i > ((level.getxExit()-8))) {
 						continue;
 					} else {
-						if (i == xInitial - 1
-								|| i == (xInitial + widthElement - 1 + 1)) {
-							int jndex = 4;
-							int jini = heigthElement;
+						int jndex = 5;
+						int jini = 0;
+						if ((i < xInitial - 6)|| (i > (xInitial + widthElement +6 - 1))) {
+							jini = 0;
+							jndex = 1;
+						} else if (i < xInitial) {
+							// jndex = jndex - (xInitial - i - 1);
+							//jndex = 4;
 
-							int y = yInitial - heigthElement + 1;
-							for (int j = y; j < (y + jini + jndex); j++) {
-								if (mapLevel[i][j] != (byte) (0)) {
+						} else if (i > (xInitial + widthElement - 1)) {
+							//jndex = jndex - (i - (xInitial + widthElement - 1) - 1);
+							//jndex = 4;
+						} else {
+							continue;
+						}
+						int y = yInitial - heigthElement + 1;
+						for (int j = y + jini; j < (y + jini + jndex); j++) {
+							System.out.println("y jini jindex" + i + " " + j + " ");
+							if (j < 15) {
+								if ((mapLevel[i][j] != (byte) (0)) && (mapLevel[i][j] != (byte)25) && (hotZoneElements[i][j]!=7) && (hotZoneElements[i][j]!=8) && (hotZoneElements[i][j]!=10) && (hotZoneElements[i][j]!=11) ) {
 									return true;
 								}
 							}
 						}
 					}
 				}
+
 			}
 		}
 		System.out.println("falseo");

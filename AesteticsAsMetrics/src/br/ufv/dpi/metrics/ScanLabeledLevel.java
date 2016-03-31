@@ -1,6 +1,7 @@
 package br.ufv.dpi.metrics;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import beauty.Elements;
 import graphBuilder.BlockNode;
@@ -45,6 +46,7 @@ public class ScanLabeledLevel {
 	protected byte[][] mapLevel;
 	private ArrayList<BlockNode>  elementsSelected;
 	private int counterGral;
+	private int[][]hotZoneElements;
 
 	public ScanLabeledLevel(Level level, int width, int height)
 	{
@@ -54,6 +56,7 @@ public class ScanLabeledLevel {
 		mapLevel=level.getMap();
 		elementsSelected=new ArrayList<BlockNode>();
 		counterGral=0;
+		hotZoneElements=new int[width][height];
 	}
 	public ArrayList<BlockNode> DeterminePositions()
 	{
@@ -414,5 +417,32 @@ public class ScanLabeledLevel {
 		BlockNode objBlockNode2=new BlockNode(x,y,counterGral,typeElement,newElement);
 		elementsSelected.add(objBlockNode2);
 		
+	}
+	public int [][] hotZones(ArrayList<BlockNode> elementsSelected)
+	{
+		Iterator<BlockNode> it = elementsSelected.iterator();
+		while (it.hasNext()) {
+			BlockNode elemento = it.next();
+
+			int xInitial = elemento.getX();
+			int yInitial = elemento.getY();
+			int widthElement = (elemento.getElement()).getWidth();
+			int heigthElement = (elemento.getElement()).getHeigth();
+			int typeElement = (elemento.getElement()).getTypeElem();
+			int idElemento = (elemento.getElement()).getIdElem();
+			
+			//System.out.print("typesinnn"+ typeElement);
+			for(int i=xInitial;i<=xInitial+widthElement-1;i++)
+			{
+				for(int j=yInitial;j>=yInitial-heigthElement+1;j--)
+				{
+					hotZoneElements[i][j]=typeElement;
+					//System.out.print(hotZoneElements[i][j]+" ");
+				}
+				//System.out.println();
+			}
+		}
+		
+		return hotZoneElements;
 	}
 }
