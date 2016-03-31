@@ -142,19 +142,19 @@ public class Reacheability extends Metrics {
 			} else {
 				int jndex = 5;
 				int jini = 0;
-				if ((i < xInitial - 5)|| (i > (xInitial + widthElement + 5 - 1))) {
+				if ((i < xInitial - 6)|| (i > (xInitial + widthElement + 6 - 1))) {
 					jini = 0;
 					jndex = 1;
 				} else if (i < xInitial) {
 					// jndex = jndex - (xInitial - i - 1);
-					jndex = 4;
+					//jndex = 4;
 
 				} else if (i > (xInitial + widthElement - 1)) {
 					//jndex = jndex - (i - (xInitial + widthElement - 1) - 1);
-					jndex = 4;
+					//jndex = 4;
 				} else {
 					jini = heigthElement;
-					jndex = 4;
+					//jndex = 4;
 				}
 				int y = yInitial - heigthElement + 1;
 				for (int j = y + jini; j < (y + jini + jndex); j++) {
@@ -179,16 +179,16 @@ public class Reacheability extends Metrics {
 			} else {
 				int jndex = 5;
 				int jini = 0;
-				if ((i < xInitial - 5)|| (i > (xInitial + widthElement + 5 - 1))) {
+				if ((i < xInitial - 6)|| (i > (xInitial + widthElement +6 - 1))) {
 					jini = 0;
 					jndex = 1;
 				} else if (i < xInitial) {
 					// jndex = jndex - (xInitial - i - 1);
-					jndex = 4;
+					//jndex = 4;
 
 				} else if (i > (xInitial + widthElement - 1)) {
 					//jndex = jndex - (i - (xInitial + widthElement - 1) - 1);
-					jndex = 4;
+					//jndex = 4;
 				} else {
 					continue;
 				}
