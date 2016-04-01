@@ -31,8 +31,10 @@ public class Balance extends Metrics  {
 		//calculation of center of mass
 		CenterOfMass objCenterOfMass=new CenterOfMass();
 		objCenterOfMass.CalculatecenterOfMass(elementsSelected);
-		xCenterMassGeneral=objCenterOfMass.getX();
-		yCenterMassGeneral=objCenterOfMass.getY();
+		//xCenterMassGeneral=objCenterOfMass.getX();
+		//yCenterMassGeneral=objCenterOfMass.getY();
+		xCenterMassGeneral=level.getxExit()/2;
+		yCenterMassGeneral=5;
 		
 		//calculation of Balance
 		//System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
