@@ -67,16 +67,18 @@ public class Reacheability extends Metrics {
 			// " heigthElement "+heigthElement);
 		}
 
-		if (totalUnreacheable == 0) {
-
-			boolean validateAllFloatingElements = ValidateAllFloatingElements();
-			if (validateAllFloatingElements==false) {
-				totalUnreacheable=countFloatingElements(); 
-				System.out.println("floatingssw "+totalUnreacheable);
+		
+		boolean validateAllFloatingElements = ValidateAllFloatingElements();
+		if (validateAllFloatingElements==false) {
+			if(countFloatingElements()>totalUnreacheable)
+			{
+			totalUnreacheable=countFloatingElements(); 
 			}
-
-
+			//System.out.println("floatingssw "+totalUnreacheable);
 		}
+
+
+		
 		double percentUnreachables = totalUnreacheable
 				/ ((double) elementsSelected.size());
 
