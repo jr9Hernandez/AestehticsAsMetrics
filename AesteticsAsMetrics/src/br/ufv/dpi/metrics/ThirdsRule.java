@@ -52,7 +52,7 @@ public class ThirdsRule extends Metrics  {
 	        
 	        //System.out.println("type "+typeElement+" x "+xInitial+" y "+yInitial+" widthElement "+widthElement+ " heigthElement "+heigthElement);
 		}
-		return totalThirdRules*-1;
+		return totalThirdRules;
 	}
 	
 	
