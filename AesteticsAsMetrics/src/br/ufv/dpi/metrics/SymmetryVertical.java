@@ -10,14 +10,14 @@ import beauty.ElementsToPlace;
 import dk.itu.mario.engine.sprites.SpriteTemplate;
 import dk.itu.mario.level.Level;
 
-public class Symmetry extends Metrics  {
+public class SymmetryVertical extends Metrics  {
 	
 
 	private ArrayList<BlockNode>  elementsSelected;
 	private double xCenterMassGeneral;
 	private double yCenterMassGeneral;
 	
-	public Symmetry(int width, int height, Level level) 
+	public SymmetryVertical(int width, int height, Level level) 
 	{
 		super(width, height, level);
 	}
@@ -34,11 +34,11 @@ public class Symmetry extends Metrics  {
 		objCenterOfMass.CalculatecenterOfMass(elementsSelected);
 		xCenterMassGeneral=objCenterOfMass.getX();
 		//yCenterMassGeneral=objCenterOfMass.getY();
-		yCenterMassGeneral=5;
+		yCenterMassGeneral=7;
 		
 		//calculation of symmetry
 		System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
-		double symmetryValue=symettry1(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
+		double symmetryValue=symettry1Vertical(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
 		//System.out.println("Symmetry "+symmetryValue);
 		
 		//testing the captured elements

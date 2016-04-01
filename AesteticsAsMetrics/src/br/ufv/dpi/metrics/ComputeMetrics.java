@@ -21,6 +21,7 @@ public class ComputeMetrics {
 	private ArrayList<Double> equilibriumValues = new ArrayList<Double>();
 	private ArrayList<Double> reacheabilityValues = new ArrayList<Double>();
 	private ArrayList<Double> rulethirdsValues = new ArrayList<Double>();
+	private ArrayList<Double> symmetryVerticalValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -45,6 +46,7 @@ public class ComputeMetrics {
 			Metrics equilibrium = new Equilibrium(level.getWidth(), level.getHeight(), level);
 			Metrics reacheability = new Reacheability(level.getWidth(), level.getHeight(), level);
 			Metrics rulethirds = new ThirdsRule(level.getWidth(), level.getHeight(), level);
+			Metrics symmetryvertical = new SymmetryVertical(level.getWidth(), level.getHeight(), level);
 
 			
 			leniencyValues.add(leniency.compute());
@@ -56,6 +58,7 @@ public class ComputeMetrics {
 			equilibriumValues.add(equilibrium.compute());
 			reacheabilityValues.add(reacheability.compute());
 			rulethirdsValues.add(rulethirds.compute());
+			symmetryVerticalValues.add(symmetryvertical.compute());
 			
 		//}
 		
@@ -99,6 +102,7 @@ public class ComputeMetrics {
 			Metrics equilibrium = new Equilibrium(level.getWidth(), level.getHeight(), level);
 			Metrics reacheability = new Reacheability(level.getWidth(), level.getHeight(), level);
 			Metrics rulethirds = new ThirdsRule(level.getWidth(), level.getHeight(), level);
+			Metrics symmetryvertical = new SymmetryVertical(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
@@ -109,6 +113,7 @@ public class ComputeMetrics {
 			equilibriumValues.add(equilibrium.compute());
 			reacheabilityValues.add(reacheability.compute());
 			rulethirdsValues.add(rulethirds.compute());
+			symmetryVerticalValues.add(symmetryvertical.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
@@ -120,6 +125,7 @@ public class ComputeMetrics {
 		//reacheabilityValues=normalize(reacheabilityValues);
 		//numobjectsValues=normalize(numobjectsValues);
 		rulethirdsValues=normalize(rulethirdsValues);
+		symmetryVerticalValues=normalize(symmetryVerticalValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
@@ -143,7 +149,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+balanceValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+symmetryValues.get(i));
 			i++;			
 			
 		}

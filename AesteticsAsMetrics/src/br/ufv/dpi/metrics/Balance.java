@@ -245,7 +245,7 @@ public class Balance extends Metrics  {
 		
 		
 
-		return balanceHorizontal;
+		return balanceValueGeneral;
 	}
 
 	@Override
