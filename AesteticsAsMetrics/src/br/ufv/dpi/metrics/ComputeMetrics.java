@@ -161,7 +161,10 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+rulethirdsValues.get(i));
+			//System.out.println(rulethirdsValues.get(i));
+			double temp2=3.39607+(0.85995*symmetryValues.get(i))+(0.25355*symmetryVerticalValues.get(i))-(1.21386*balanceValues.get(i))+(1.44985*balanceHorizontalValues.get(i))+(0.41212*equilibriumValues.get(i))-(1.55894*reacheabilityValues.get(i))+(0.42479*rulethirdsValues.get(i));
+			double temp=3.1487+(0.8748*symmetryValues.get(i))+(0.2281*symmetryVerticalValues.get(i))-(144.7023*balanceValues.get(i))+(56.0653*balanceHorizontalValues.get(i))+(97.9718*balanceVerticalValues.get(i))+(0.4157*equilibriumValues.get(i))-(1.5529*reacheabilityValues.get(i))+(0.4289*rulethirdsValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+temp);
 			i++;			
 			
 		}
