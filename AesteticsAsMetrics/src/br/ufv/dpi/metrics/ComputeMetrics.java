@@ -22,6 +22,8 @@ public class ComputeMetrics {
 	private ArrayList<Double> reacheabilityValues = new ArrayList<Double>();
 	private ArrayList<Double> rulethirdsValues = new ArrayList<Double>();
 	private ArrayList<Double> symmetryVerticalValues = new ArrayList<Double>();
+	private ArrayList<Double> balanceVerticalValues = new ArrayList<Double>();
+	private ArrayList<Double> balanceHorizontalValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -47,6 +49,8 @@ public class ComputeMetrics {
 			Metrics reacheability = new Reacheability(level.getWidth(), level.getHeight(), level);
 			Metrics rulethirds = new ThirdsRule(level.getWidth(), level.getHeight(), level);
 			Metrics symmetryvertical = new SymmetryVertical(level.getWidth(), level.getHeight(), level);
+			Metrics balancevertical = new BalanceVertical(level.getWidth(), level.getHeight(), level);
+			Metrics balancehorizontal = new BalanceHorizontal(level.getWidth(), level.getHeight(), level);
 
 			
 			leniencyValues.add(leniency.compute());
@@ -59,6 +63,8 @@ public class ComputeMetrics {
 			reacheabilityValues.add(reacheability.compute());
 			rulethirdsValues.add(rulethirds.compute());
 			symmetryVerticalValues.add(symmetryvertical.compute());
+			balanceVerticalValues.add(balancevertical.compute());
+			balanceHorizontalValues.add(balancehorizontal.compute());
 			
 		//}
 		
@@ -103,6 +109,8 @@ public class ComputeMetrics {
 			Metrics reacheability = new Reacheability(level.getWidth(), level.getHeight(), level);
 			Metrics rulethirds = new ThirdsRule(level.getWidth(), level.getHeight(), level);
 			Metrics symmetryvertical = new SymmetryVertical(level.getWidth(), level.getHeight(), level);
+			Metrics balancevertical = new BalanceVertical(level.getWidth(), level.getHeight(), level);
+			Metrics balancehorizontal = new BalanceHorizontal(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
@@ -114,6 +122,8 @@ public class ComputeMetrics {
 			reacheabilityValues.add(reacheability.compute());
 			rulethirdsValues.add(rulethirds.compute());
 			symmetryVerticalValues.add(symmetryvertical.compute());
+			balanceVerticalValues.add(balancevertical.compute());
+			balanceHorizontalValues.add(balancehorizontal.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
@@ -126,6 +136,8 @@ public class ComputeMetrics {
 		//numobjectsValues=normalize(numobjectsValues);
 		rulethirdsValues=normalize(rulethirdsValues);
 		symmetryVerticalValues=normalize(symmetryVerticalValues);
+		balanceVerticalValues=normalize(balanceVerticalValues);
+		balanceHorizontalValues=normalize(balanceHorizontalValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
@@ -149,7 +161,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+rulethirdsValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+balanceValues.get(i));
 			i++;			
 			
 		}
