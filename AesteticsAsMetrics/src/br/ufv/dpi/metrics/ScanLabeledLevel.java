@@ -64,6 +64,11 @@ public class ScanLabeledLevel {
 		int limitBlocks=0;
 		int limitBlueBlocks=0;
 		int limitBrownBlocks=0;
+		
+		int lastYBlocks=0;
+		int lastYBlueBlocks=0;
+		int lastYBrownBlocks=0;
+		
 		for (int i = 0; i < width; i++) {
 			int counterHills = 0;
 			
@@ -216,7 +221,7 @@ public class ScanLabeledLevel {
 					
 				}
 				//case of blocks!
-				if((mapLevel[i][j] == BLOCK_POWERUP || mapLevel[i][j] == BLOCK_COIN || mapLevel[i][j] == (byte) (2 + 1 * 16) || mapLevel[i][j] == (byte) (1 + 1 * 16)|| mapLevel[i][j] == (byte) (0 + 1 * 16)) && i>limitBlocks)
+				if((mapLevel[i][j] == BLOCK_POWERUP || mapLevel[i][j] == BLOCK_COIN || mapLevel[i][j] == (byte) (2 + 1 * 16) || mapLevel[i][j] == (byte) (1 + 1 * 16)|| mapLevel[i][j] == (byte) (0 + 1 * 16)) && (i>limitBlocks || j!=lastYBlocks))
 				{
 					//calculating the width
 					
@@ -224,6 +229,7 @@ public class ScanLabeledLevel {
 					{
 						if(mapLevel[k][j] != BLOCK_POWERUP && mapLevel[k][j] != BLOCK_COIN && mapLevel[k][j] != (byte) (2 + 1 * 16) && mapLevel[k][j] != (byte) (1 + 1 * 16) && mapLevel[k][j] != (byte) (0 + 1 * 16))
 						{
+							lastYBlocks=j;
 							limitBlocks=k-1;
 							widthElement=k-i;
 							break;
@@ -238,7 +244,7 @@ public class ScanLabeledLevel {
 				}	
 				
 				//case of blue blocks!
-				if((mapLevel[i][j] == (byte) 28) && i>limitBlueBlocks)
+				if((mapLevel[i][j] == (byte) 28) && (i>limitBlueBlocks || j!=lastYBlueBlocks))
 				{
 					//calculating the width
 					
@@ -246,6 +252,7 @@ public class ScanLabeledLevel {
 					{
 						if(mapLevel[k][j] != (byte) 28)
 						{
+							lastYBlueBlocks=j;
 							limitBlueBlocks=k-1;
 							widthElement=k-i;
 							break;
@@ -260,7 +267,7 @@ public class ScanLabeledLevel {
 				}
 				
 				//case of brown blocks!
-				if((mapLevel[i][j] == (byte) 12) && i>limitBrownBlocks)
+				if((mapLevel[i][j] == (byte) 12) && (i>limitBrownBlocks || j!=lastYBrownBlocks))
 				{
 					//calculating the width
 					
@@ -268,6 +275,7 @@ public class ScanLabeledLevel {
 					{
 						if(mapLevel[k][j] != (byte) 12)
 						{
+							lastYBrownBlocks=j;
 							limitBrownBlocks=k-1;
 							widthElement=k-i;
 							break;
