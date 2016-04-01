@@ -149,7 +149,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+symmetryValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+balanceValues.get(i));
 			i++;			
 			
 		}
