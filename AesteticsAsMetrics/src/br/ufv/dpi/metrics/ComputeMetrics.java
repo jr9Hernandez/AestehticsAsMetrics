@@ -24,6 +24,7 @@ public class ComputeMetrics {
 	private ArrayList<Double> symmetryVerticalValues = new ArrayList<Double>();
 	private ArrayList<Double> balanceVerticalValues = new ArrayList<Double>();
 	private ArrayList<Double> balanceHorizontalValues = new ArrayList<Double>();
+	private ArrayList<Double> unityValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -51,6 +52,7 @@ public class ComputeMetrics {
 			Metrics symmetryvertical = new SymmetryVertical(level.getWidth(), level.getHeight(), level);
 			Metrics balancevertical = new BalanceVertical(level.getWidth(), level.getHeight(), level);
 			Metrics balancehorizontal = new BalanceHorizontal(level.getWidth(), level.getHeight(), level);
+			Metrics unity = new Unity(level.getWidth(), level.getHeight(), level);
 
 			
 			leniencyValues.add(leniency.compute());
@@ -65,6 +67,7 @@ public class ComputeMetrics {
 			symmetryVerticalValues.add(symmetryvertical.compute());
 			balanceVerticalValues.add(balancevertical.compute());
 			balanceHorizontalValues.add(balancehorizontal.compute());
+			unityValues.add(unity.compute());
 			
 		//}
 		
@@ -111,6 +114,7 @@ public class ComputeMetrics {
 			Metrics symmetryvertical = new SymmetryVertical(level.getWidth(), level.getHeight(), level);
 			Metrics balancevertical = new BalanceVertical(level.getWidth(), level.getHeight(), level);
 			Metrics balancehorizontal = new BalanceHorizontal(level.getWidth(), level.getHeight(), level);
+			Metrics unity = new Unity(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
@@ -124,6 +128,7 @@ public class ComputeMetrics {
 			symmetryVerticalValues.add(symmetryvertical.compute());
 			balanceVerticalValues.add(balancevertical.compute());
 			balanceHorizontalValues.add(balancehorizontal.compute());
+			unityValues.add(unity.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
@@ -138,6 +143,7 @@ public class ComputeMetrics {
 		symmetryVerticalValues=normalize(symmetryVerticalValues);
 		balanceVerticalValues=normalize(balanceVerticalValues);
 		balanceHorizontalValues=normalize(balanceHorizontalValues);
+		unityValues=normalize(unityValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
