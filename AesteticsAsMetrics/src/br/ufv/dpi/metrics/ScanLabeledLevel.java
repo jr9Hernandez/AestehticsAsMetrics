@@ -444,7 +444,14 @@ public class ScanLabeledLevel {
 			{
 				for(int j=yInitial;j>=yInitial-heigthElement+1;j--)
 				{
+					if(typeElement!=0)
+					{
 					hotZoneElements[i][j]=typeElement;
+					}
+					//else
+					//{
+						//hotZoneElements[i][j]=-1;	
+					//}
 					//System.out.print(hotZoneElements[i][j]+" ");
 				}
 				//System.out.println();
