@@ -148,8 +148,8 @@ public class ComputeMetrics {
 		symmetryVerticalValues=normalize(symmetryVerticalValues);
 		balanceVerticalValues=normalize(balanceVerticalValues);
 		balanceHorizontalValues=normalize(balanceHorizontalValues);
-		//unityValues=normalize(unityValues);
-		//rythmValues=normalize(rythmValues);
+		unityValues=normalize(unityValues);
+		rythmValues=normalize(rythmValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
