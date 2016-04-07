@@ -167,7 +167,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+unityValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+equilibriumValues.get(i));
 			i++;			
 			
 		}
