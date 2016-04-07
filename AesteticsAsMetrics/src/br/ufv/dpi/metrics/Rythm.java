@@ -128,7 +128,7 @@ public class Rythm extends Metrics  {
 	        double yInitial= elemento.getY();
 	       
 	        widthElement=element.getWidth();
-	        heigthElement=element.getHeigth()+1;
+	        heigthElement=element.getHeigth();
 	        
 	        
 	        if((xInitial+widthElement)<=xCenterMassGeneral )
@@ -500,7 +500,7 @@ public class Rythm extends Metrics  {
 		rythmValueA=rythmValueA/6;
 		//symmetryValueGeneral=SubstractionSymmetries(gulATG,gurATG)+SubstractionSymmetries(gllATG,glrATG);
 		//System.out.println("symmetryValue "+symmetryValueGeneral);
-		rythmValueGeneral=1-( (Math.abs(rythmValueX))+(Math.abs(rythmValueY))+(Math.abs(rythmValueA)) )/3;
+		rythmValueGeneral=1-( Math.abs(rythmValueX)+Math.abs(rythmValueY)+Math.abs(rythmValueA) )/3;
 		return rythmValueGeneral;
 	}
 	
