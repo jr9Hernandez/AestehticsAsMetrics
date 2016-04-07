@@ -25,6 +25,7 @@ public class ComputeMetrics {
 	private ArrayList<Double> balanceVerticalValues = new ArrayList<Double>();
 	private ArrayList<Double> balanceHorizontalValues = new ArrayList<Double>();
 	private ArrayList<Double> unityValues = new ArrayList<Double>();
+	private ArrayList<Double> rythmValues = new ArrayList<Double>();
 
 	public void computeSingle(String tela) {
 
@@ -53,6 +54,7 @@ public class ComputeMetrics {
 			Metrics balancevertical = new BalanceVertical(level.getWidth(), level.getHeight(), level);
 			Metrics balancehorizontal = new BalanceHorizontal(level.getWidth(), level.getHeight(), level);
 			Metrics unity = new Unity(level.getWidth(), level.getHeight(), level);
+			Metrics rythm = new Rythm(level.getWidth(), level.getHeight(), level);
 
 			
 			leniencyValues.add(leniency.compute());
@@ -68,6 +70,7 @@ public class ComputeMetrics {
 			balanceVerticalValues.add(balancevertical.compute());
 			balanceHorizontalValues.add(balancehorizontal.compute());
 			unityValues.add(unity.compute());
+			rythmValues.add(rythm.compute());
 			
 		//}
 		
@@ -115,6 +118,7 @@ public class ComputeMetrics {
 			Metrics balancevertical = new BalanceVertical(level.getWidth(), level.getHeight(), level);
 			Metrics balancehorizontal = new BalanceHorizontal(level.getWidth(), level.getHeight(), level);
 			Metrics unity = new Unity(level.getWidth(), level.getHeight(), level);
+			Metrics rythm = new Rythm(level.getWidth(), level.getHeight(), level);
 
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
@@ -129,6 +133,7 @@ public class ComputeMetrics {
 			balanceVerticalValues.add(balancevertical.compute());
 			balanceHorizontalValues.add(balancehorizontal.compute());
 			unityValues.add(unity.compute());
+			rythmValues.add(rythm.compute());
 		}
 		
 		leniencyValues = normalize(leniencyValues);
@@ -144,6 +149,7 @@ public class ComputeMetrics {
 		balanceVerticalValues=normalize(balanceVerticalValues);
 		balanceHorizontalValues=normalize(balanceHorizontalValues);
 		//unityValues=normalize(unityValues);
+		//rythmValues=normalize(rythmValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
@@ -167,7 +173,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+unityValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+rythmValues.get(i));
 			i++;			
 			
 		}
