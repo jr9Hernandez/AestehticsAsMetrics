@@ -143,7 +143,7 @@ public class ComputeMetrics {
 		symmetryVerticalValues=normalize(symmetryVerticalValues);
 		balanceVerticalValues=normalize(balanceVerticalValues);
 		balanceHorizontalValues=normalize(balanceHorizontalValues);
-		unityValues=normalize(unityValues);
+		//unityValues=normalize(unityValues);
 		
 /*
 		for (LabeledLevel labeledLevel1 : labeledLevels) {
@@ -167,7 +167,7 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+equilibriumValues.get(i));
+			System.out.println(level.getVisualAesthetics()+","+unityValues.get(i));
 			i++;			
 			
 		}

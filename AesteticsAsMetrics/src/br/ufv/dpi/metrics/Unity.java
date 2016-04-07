@@ -15,18 +15,19 @@ public class Unity extends Metrics  {
 
 	private ArrayList<BlockNode>  elementsSelected;
 	private int numElements;
-	private int numDifferentSizes;
+	private double numDifferentSizes;
 	private double UMForm;
 	private double UMSpace;
 	private double UM;
 	private double totalAreas;
+	private double areaFrame;
 	
-	private int moreLeft;
-	private int moreRight;
-	private int moreUp;
-	private int moreLow;
+	private double moreLeft;
+	private double moreRight;
+	private double moreUp;
+	private double moreLow;
 	private int[][] hotZones;
-	private int totalAreaLayout;
+	private double totalAreaLayout;
 	
 	public Unity(int width, int height, Level level) 
 	{
@@ -45,25 +46,31 @@ public class Unity extends Metrics  {
 		CalculateAreas(elementsSelected);
 
 		//calculate UFForm
-		UMForm=1-((numDifferentSizes-1)/numElements);
+		UMForm=1-((numDifferentSizes-1)/(double)numElements);
 		
 		//calculate AreaLayout->moreLeft, moreRight, moreLow, moreUp
+		areaFrame=height*(level.getxExit()-18);
 		AreaLayout(elementsSelected);
 		
 		//testing values
-		/*System.out.println("numElements "+numElements);
+		System.out.println("numElements "+numElements);
 		System.out.println("numDifferentSizes "+numDifferentSizes);
 		System.out.println("totalAreaLayout "+totalAreaLayout);
-		System.out.println("totalAreas "+totalAreas);*/
+		System.out.println("totalAreas "+totalAreas);
+		System.out.println("areaFrame "+areaFrame);
 
 		
 		//calculate UMSpace
-		double areaFrame=height*(level.getxExit()-18);
+		
 		UMSpace=1-((totalAreaLayout-totalAreas)/(areaFrame-totalAreas));
 		
 		//calculate UM
 		UM=(Math.abs(UMForm)+Math.abs(UMSpace))/2;
 				
+		/*System.out.println("UMForm "+UMForm);
+		System.out.println("UMSpace "+UMSpace);
+		System.out.println("UM "+UM);*/
+		
 		//testing the captured elements
 		/*Iterator<BlockNode> it = elementsSelected.iterator();
 		while(it.hasNext()){
@@ -176,6 +183,7 @@ public class Unity extends Metrics  {
 		System.out.println("totalAreaLayout "+totalAreaLayout);
 		totalAreaLayout=totalAreaLayout-(moreUp*(moreLeft-10)) - (moreUp*((level.getxExit()-9)-moreRight)) - ((height-moreLow-1)*(moreLeft-10)) - ((height-moreLow-1)*((level.getxExit()-9)-moreRight));
 		System.out.println("totalAreaLayout "+totalAreaLayout);
+		totalAreaLayout=areaFrame-totalAreaLayout;
 	}
 	
 	
