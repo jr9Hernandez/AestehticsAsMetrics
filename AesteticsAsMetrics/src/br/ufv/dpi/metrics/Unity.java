@@ -173,7 +173,9 @@ public class Unity extends Metrics  {
 		//13 is because 5 from the start piece, and 3 from the final piece
 		totalAreaLayout=(moreUp*(level.getxExit()-18)) + ((height-moreLow-1)*(level.getxExit()-18))  + ((moreLeft-10)*height) + ( ((level.getxExit()-9)-moreRight)*height  );
 		//System.out.println("level.getxExit()-8 "+(level.getxExit()-8));
-		
+		System.out.println("totalAreaLayout "+totalAreaLayout);
+		totalAreaLayout=totalAreaLayout-(moreUp*(moreLeft-10)) - (moreUp*((level.getxExit()-9)-moreRight)) - ((height-moreLow-1)*(moreLeft-10)) - ((height-moreLow-1)*((level.getxExit()-9)-moreRight));
+		System.out.println("totalAreaLayout "+totalAreaLayout);
 	}
 	
 	
