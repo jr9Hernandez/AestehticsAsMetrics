@@ -43,7 +43,7 @@ public class Equilibrium extends Metrics  {
 		double yEquilibrium=Math.abs(yCenterMassGeneral-6);
 		
 		double equilibriumValue=xEquilibrium+yEquilibrium;
-		return xEquilibrium;
+		return equilibriumValue;
 	}
 	
 
