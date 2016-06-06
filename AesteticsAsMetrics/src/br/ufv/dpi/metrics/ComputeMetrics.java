@@ -173,7 +173,8 @@ public class ComputeMetrics {
 		int i=0;
 		for(LabeledLevel level : labeledLevels) {
 			
-			System.out.println(level.getVisualAesthetics()+","+rythmValues.get(i));
+			//System.out.println(level.getVisualAesthetics()+","+rythmValues.get(i));
+			System.out.println(equilibriumValues.get(i));
 			i++;			
 			
 		}

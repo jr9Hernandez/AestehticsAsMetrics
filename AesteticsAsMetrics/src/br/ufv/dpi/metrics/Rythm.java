@@ -42,15 +42,24 @@ public class Rythm extends Metrics  {
 		//xCenterMassGeneral=objCenterOfMass.getX();
 		//yCenterMassGeneral=objCenterOfMass.getY();
 		xCenterMassGeneral=level.getxExit()/2;
-		yCenterMassGeneral=5;
+		yCenterMassGeneral=7;
 		
 		System.out.println("xCenterMassGeneral "+xCenterMassGeneral);
 		System.out.println("yCenterMassGeneral "+yCenterMassGeneral);
 		
 		//calculation of rythm
 		System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
-		double rythmValueGeneral=Rythm1Areas(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
 		
+		double rythmValueGeneral=999999999;
+		for(int i=5;i<25;i++)
+		{
+		double rythmValueGeneralP=Rythm1Areas(elementsSelected, i, yCenterMassGeneral);
+		if(rythmValueGeneralP<rythmValueGeneral)
+		{
+			rythmValueGeneral=rythmValueGeneralP;
+			
+		}
+		}
 		//testing the captured elements
 		/*Iterator<BlockNode> it = elementsSelected.iterator();
 		while(it.hasNext()){
@@ -77,7 +86,7 @@ public class Rythm extends Metrics  {
 	}
 	
 	
-	public double Rythm1Areas(ArrayList states, double xCenterMassGeneral, double yCenterMassGeneral)
+	public double Rythm1Areas(ArrayList states, double xCenterMassGeneralM, double yCenterMassGeneral)
 	{
 		
 		double [] gulAG;
@@ -134,14 +143,14 @@ public class Rythm extends Metrics  {
 	        heigthElement=element.getHeigth();
 	        
 	        
-	        if((xInitial+widthElement)<=xCenterMassGeneral )
+	        if((xInitial+widthElement)<=xCenterMassGeneralM )
 	        {
 	        	//block up left
 	        	if(yInitial<=yCenterMassGeneral)
 	        	{
 	        		x=xInitial+(widthElement/2);
 	        		y=yInitial-(heigthElement/2);
-	        		gulAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gulAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gulATG[0]=gulATG[0]+gulAG[0];
 	        		gulAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		gulATG[1]=gulATG[1]+gulAG[1];
@@ -165,7 +174,7 @@ public class Rythm extends Metrics  {
 	        	{
 	        		x=xInitial+(widthElement/2);
 	        		y=yInitial-(heigthElement/2);
-	        		gllAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gllAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gllATG[0]=gllATG[0]+gllAG[0];
 	        		gllAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		gllATG[1]=gllATG[1]+gllAG[1];
@@ -190,7 +199,7 @@ public class Rythm extends Metrics  {
 	        		//first block of the element (up left)
 	        		//y=(yInitial-heigthElement)+(yCenterMassGeneral-yInitial)/2;
 	        		y=(yInitial-heigthElement)+(yCenterMassGeneral-(yInitial-heigthElement))/2;
-	        		gulAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gulAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gulATG[0]=gulATG[0]+gulAG[0];
 	        		gulAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		gulATG[1]=gulATG[1]+gulAG[1];
@@ -208,7 +217,7 @@ public class Rythm extends Metrics  {
 	        	
 	        		//second block of the element (low left)
 	        		y=yInitial-(yInitial-yCenterMassGeneral)/2;
-	        		gllAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gllAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gllATG[0]=gllATG[0]+gllAG[0];
 	        		gllAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		gllATG[1]=gllATG[1]+gllAG[1];
@@ -226,7 +235,7 @@ public class Rythm extends Metrics  {
 	        		gllATG[3]=gllATG[3]+gllAG[3];
 	        	}
 	        }
-	        else if(xInitial>=xCenterMassGeneral )
+	        else if(xInitial>=xCenterMassGeneralM )
 	        {
 	        	
 	        	//block up right
@@ -234,7 +243,7 @@ public class Rythm extends Metrics  {
 	        	{
 	        		x=xInitial+(widthElement/2);
 	        		y=yInitial-(heigthElement/2);
-	        		gurAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gurAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gurATG[0]=gurATG[0]+gurAG[0];
 	        		gurAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		gurATG[1]=gurATG[1]+gurAG[1];
@@ -256,7 +265,7 @@ public class Rythm extends Metrics  {
 	        	{
 	        		x=xInitial+(widthElement/2);
 	        		y=yInitial-(heigthElement/2);
-	        		glrAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		glrAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		glrATG[0]=glrATG[0]+glrAG[0];
 	        		glrAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		glrATG[1]=glrATG[1]+glrAG[1];
@@ -280,7 +289,7 @@ public class Rythm extends Metrics  {
 	        		
 	        		//first block of the element (up right)
 	        		y=(yInitial-heigthElement)+(yCenterMassGeneral-(yInitial-heigthElement))/2;
-	        		gurAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gurAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gurATG[0]=gurATG[0]+gurAG[0];
 	        		gurAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		gurATG[1]=gurATG[1]+gurAG[1];
@@ -299,7 +308,7 @@ public class Rythm extends Metrics  {
 		        	
 	        		//second block of the element  (low right)
 	        		y=yInitial-(yInitial-yCenterMassGeneral)/2;
-	        		glrAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		glrAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		glrATG[0]=glrATG[0]+glrAG[0];
 	        		glrAG[1]=Math.abs(y-yCenterMassGeneral);
 	        		glrATG[1]=glrATG[1]+glrAG[1];
@@ -325,12 +334,12 @@ public class Rythm extends Metrics  {
 	        		y=yInitial-(heigthElement/2);
 	        		
 	        		//first block of the element (up left)
-	        		x=(xInitial+(xCenterMassGeneral-xInitial)/2);
-	        		gulAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		x=(xInitial+(xCenterMassGeneralM-xInitial)/2);
+	        		gulAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gulATG[0]=gulATG[0]+gulAG[0];
 			        gulAG[1]=Math.abs(y-yCenterMassGeneral);
 			        gulATG[1]=gulATG[1]+gulAG[1];
-			        gulAG[2]=xCenterMassGeneral-xInitial;
+			        gulAG[2]=xCenterMassGeneralM-xInitial;
 			        
 			        gulAG[3]=heigthElement;
 			        
@@ -344,12 +353,12 @@ public class Rythm extends Metrics  {
 	        		gulATG[3]=gulATG[3]+gulAG[3];
 			        
 			        //second block of the element (up right)
-			        x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneral)/2;
-	        		gurAG[0]=Math.abs(x-xCenterMassGeneral);
+			        x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneralM)/2;
+	        		gurAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gurATG[0]=gurATG[0]+gurAG[0];
 			        gurAG[1]=Math.abs(y-yCenterMassGeneral);
 			        gurATG[1]=gurATG[1]+gurAG[1];
-			        gurAG[2]=(xInitial+widthElement)-xCenterMassGeneral;
+			        gurAG[2]=(xInitial+widthElement)-xCenterMassGeneralM;
 			        
 			        gurAG[3]=heigthElement;
 			        
@@ -368,12 +377,12 @@ public class Rythm extends Metrics  {
 	        		y=yInitial-(heigthElement/2);
 	        		
 	        		//first block of the element (low left)
-	        		x=(xInitial+(xCenterMassGeneral-xInitial)/2);
-	        		gllAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		x=(xInitial+(xCenterMassGeneralM-xInitial)/2);
+	        		gllAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gllATG[0]=gllATG[0]+gllAG[0];
 			        gllAG[1]=Math.abs(y-yCenterMassGeneral);
 			        gllATG[1]=gllATG[1]+gllAG[1];
-			        gllAG[2]=(xCenterMassGeneral-xInitial);
+			        gllAG[2]=(xCenterMassGeneralM-xInitial);
 			        
 			        gllAG[3]=heigthElement;
 			        
@@ -387,12 +396,12 @@ public class Rythm extends Metrics  {
 	        		gllATG[3]=gllATG[3]+gllAG[3];
 			        
 			        //second block of the element (low right)
-			        x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneral)/2;
-	        		glrAG[0]=Math.abs(x-xCenterMassGeneral);
+			        x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneralM)/2;
+	        		glrAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		glrATG[0]=glrATG[0]+glrAG[0];
 			        glrAG[1]=Math.abs(y-yCenterMassGeneral);
 			        glrATG[1]=glrATG[1]+glrAG[1];
-			        glrAG[2]=(xInitial+widthElement)-xCenterMassGeneral;
+			        glrAG[2]=(xInitial+widthElement)-xCenterMassGeneralM;
 			        
 			        glrAG[3]=heigthElement;
 			        
@@ -409,14 +418,14 @@ public class Rythm extends Metrics  {
 	        	{
 	        		//falta implementar caso todos los cuadrantes
 	        		//first block of the element (up left)
-	        		x=(xInitial+(xCenterMassGeneral-xInitial)/2);
+	        		x=(xInitial+(xCenterMassGeneralM-xInitial)/2);
 	        		y=(yInitial-heigthElement)+(yCenterMassGeneral-(yInitial-heigthElement))/2;
 	        		
-	        		gulAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gulAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gulATG[0]=gulATG[0]+gulAG[0];
 			        gulAG[1]=Math.abs(y-yCenterMassGeneral);
 			        gulATG[1]=gulATG[1]+gulAG[1];
-			        gulAG[2]=xCenterMassGeneral-xInitial;
+			        gulAG[2]=xCenterMassGeneralM-xInitial;
 			        
 			        gulAG[3]=yCenterMassGeneral-(yInitial-heigthElement);
 			        			        
@@ -428,14 +437,14 @@ public class Rythm extends Metrics  {
 	        		gulATG[3]=gulATG[3]+gulAG[3];
 			        
 	        		//second block of the element (up right)
-	        		x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneral)/2;
+	        		x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneralM)/2;
 	        		y=(yInitial-heigthElement)+(yCenterMassGeneral-(yInitial-heigthElement))/2;
 	        		
-	        		gurAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gurAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gurATG[0]=gurATG[0]+gurAG[0];
 			        gurAG[1]=Math.abs(y-yCenterMassGeneral);
 			        gurATG[1]=gurATG[1]+gurAG[1];
-			        gurAG[2]=(xInitial+widthElement)-xCenterMassGeneral;
+			        gurAG[2]=(xInitial+widthElement)-xCenterMassGeneralM;
 			        
 			        gurAG[3]=yCenterMassGeneral-(yInitial-heigthElement);
 			        
@@ -447,14 +456,14 @@ public class Rythm extends Metrics  {
 	        		gurATG[3]=gurATG[3]+gurAG[3];
 	        		
 	        		//first block of the element (low left)
-	        		x=(xInitial+(xCenterMassGeneral-xInitial)/2);
+	        		x=(xInitial+(xCenterMassGeneralM-xInitial)/2);
 	        		y=yInitial-(yInitial-yCenterMassGeneral)/2;
 	        		
-	        		gllAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		gllAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		gllATG[0]=gllATG[0]+gllAG[0];
 			        gllAG[1]=Math.abs(y-yCenterMassGeneral);
 			        gllATG[1]=gllATG[1]+gllAG[1];
-			        gllAG[2]=(xCenterMassGeneral-xInitial);
+			        gllAG[2]=(xCenterMassGeneralM-xInitial);
 			        
 			        gllAG[3]=yInitial-yCenterMassGeneral;
 			        			        
@@ -466,14 +475,14 @@ public class Rythm extends Metrics  {
 	        		gllATG[3]=gllATG[3]+gllAG[3];
 			        
 	        		//second block of the element (low right)
-	        		x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneral)/2;
+	        		x=(xInitial+widthElement)-((xInitial+widthElement)-xCenterMassGeneralM)/2;
 	        		y=yInitial-(yInitial-yCenterMassGeneral)/2;
 	        		
-	        		glrAG[0]=Math.abs(x-xCenterMassGeneral);
+	        		glrAG[0]=Math.abs(x-xCenterMassGeneralM);
 	        		glrATG[0]=glrATG[0]+glrAG[0];
 			        glrAG[1]=Math.abs(y-yCenterMassGeneral);
 			        glrATG[1]=glrATG[1]+glrAG[1];
-			        glrAG[2]=(xInitial+widthElement)-xCenterMassGeneral;
+			        glrAG[2]=(xInitial+widthElement)-xCenterMassGeneralM;
 			        
 			        glrAG[3]=yInitial-yCenterMassGeneral;
 			        
@@ -493,20 +502,20 @@ public class Rythm extends Metrics  {
 		System.out.println("gurAT "+gurATG[0]+" "+gurATG[1]+" "+gurATG[2]+" "+gurATG[3]);
 		System.out.println("gllAT "+gllATG[0]+" "+gllATG[1]+" "+gllATG[2]+" "+gllATG[3]);
 		System.out.println("glrAT "+glrATG[0]+" "+glrATG[1]+" "+glrATG[2]+" "+glrATG[3]);
-		rythmValueX=SubstractionRythm(gulATG,gllATG,0)+SubstractionRythm(gurATG,glrATG,0)+SubstractionRythm(gulATG,gurATG,0)+SubstractionRythm(gllATG,glrATG,0)+SubstractionRythm(gulATG,glrATG,0)+SubstractionRythm(gurATG,gllATG,0);
-		rythmValueX=rythmValueX/6;
+		rythmValueX=SubstractionRythm(gulATG,gurATG,0)+SubstractionRythm(gllATG,glrATG,0);
+		rythmValueX=rythmValueX;
 		System.out.println("rythmValueX "+rythmValueX);
 		
-		rythmValueY=SubstractionRythm(gulATG,gllATG,1)+SubstractionRythm(gurATG,glrATG,1)+SubstractionRythm(gulATG,gurATG,1)+SubstractionRythm(gllATG,glrATG,1)+SubstractionRythm(gulATG,glrATG,1)+SubstractionRythm(gurATG,gllATG,1);
-		rythmValueY=rythmValueY/6;
+		rythmValueY=SubstractionRythm(gulATG,gurATG,1)+SubstractionRythm(gllATG,glrATG,1);
+		rythmValueY=rythmValueY;
 		System.out.println("rythmValueY "+rythmValueY);
 		
-		rythmValueA=SubstractionRythm(gulATG,gllATG,2)+SubstractionRythm(gurATG,glrATG,2)+SubstractionRythm(gulATG,gurATG,2)+SubstractionRythm(gllATG,glrATG,2)+SubstractionRythm(gulATG,glrATG,2)+SubstractionRythm(gurATG,gllATG,2);
-		rythmValueA=rythmValueA/6;
+		rythmValueA=SubstractionRythm(gulATG,gurATG,2)+SubstractionRythm(gllATG,glrATG,2);
+		rythmValueA=rythmValueA;
 		System.out.println("rythmValueA "+rythmValueA);
 		//symmetryValueGeneral=SubstractionSymmetries(gulATG,gurATG)+SubstractionSymmetries(gllATG,glrATG);
 		//System.out.println("symmetryValue "+symmetryValueGeneral);
-		rythmValueGeneral=1-( Math.abs(rythmValueX)+Math.abs(rythmValueY)+Math.abs(rythmValueA) )/3;
+		rythmValueGeneral=( Math.abs(rythmValueX)+Math.abs(rythmValueY)+Math.abs(rythmValueA) );
 		return rythmValueGeneral;
 	}
 	
