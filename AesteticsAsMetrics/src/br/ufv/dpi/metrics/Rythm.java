@@ -49,7 +49,16 @@ public class Rythm extends Metrics  {
 		
 		//calculation of rythm
 		System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
-		double rythmValueGeneral=Rythm1Areas(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
+		
+		double rythmValueGeneral=99999999;
+		for(int i=8;i<32;i++)
+		{
+		double rythmValueGeneralp=Rythm1Areas(elementsSelected, i, yCenterMassGeneral);
+		if(rythmValueGeneralp<rythmValueGeneral)
+		{
+			rythmValueGeneral=rythmValueGeneralp;
+		}
+		}
 		
 		//testing the captured elements
 		/*Iterator<BlockNode> it = elementsSelected.iterator();
@@ -493,20 +502,20 @@ public class Rythm extends Metrics  {
 		System.out.println("gurAT "+gurATG[0]+" "+gurATG[1]+" "+gurATG[2]+" "+gurATG[3]);
 		System.out.println("gllAT "+gllATG[0]+" "+gllATG[1]+" "+gllATG[2]+" "+gllATG[3]);
 		System.out.println("glrAT "+glrATG[0]+" "+glrATG[1]+" "+glrATG[2]+" "+glrATG[3]);
-		rythmValueX=SubstractionRythm(gulATG,gllATG,0)+SubstractionRythm(gurATG,glrATG,0)+SubstractionRythm(gulATG,gurATG,0)+SubstractionRythm(gllATG,glrATG,0)+SubstractionRythm(gulATG,glrATG,0)+SubstractionRythm(gurATG,gllATG,0);
-		rythmValueX=rythmValueX/6;
+		rythmValueX=SubstractionRythm(gulATG,gurATG,0)+SubstractionRythm(gllATG,glrATG,0);
+		rythmValueX=rythmValueX/states.size();
 		System.out.println("rythmValueX "+rythmValueX);
 		
-		rythmValueY=SubstractionRythm(gulATG,gllATG,1)+SubstractionRythm(gurATG,glrATG,1)+SubstractionRythm(gulATG,gurATG,1)+SubstractionRythm(gllATG,glrATG,1)+SubstractionRythm(gulATG,glrATG,1)+SubstractionRythm(gurATG,gllATG,1);
-		rythmValueY=rythmValueY/6;
+		rythmValueY=SubstractionRythm(gulATG,gurATG,1)+SubstractionRythm(gllATG,glrATG,1);
+		rythmValueY=rythmValueY/states.size();
 		System.out.println("rythmValueY "+rythmValueY);
 		
-		rythmValueA=SubstractionRythm(gulATG,gllATG,2)+SubstractionRythm(gurATG,glrATG,2)+SubstractionRythm(gulATG,gurATG,2)+SubstractionRythm(gllATG,glrATG,2)+SubstractionRythm(gulATG,glrATG,2)+SubstractionRythm(gurATG,gllATG,2);
-		rythmValueA=rythmValueA/6;
+		rythmValueA=SubstractionRythm(gulATG,gurATG,2)+SubstractionRythm(gllATG,glrATG,2);
+		rythmValueA=rythmValueA/(gulATG[2]+gurATG[2]+gllATG[2]+glrATG[2]);
 		System.out.println("rythmValueA "+rythmValueA);
 		//symmetryValueGeneral=SubstractionSymmetries(gulATG,gurATG)+SubstractionSymmetries(gllATG,glrATG);
 		//System.out.println("symmetryValue "+symmetryValueGeneral);
-		rythmValueGeneral=1-( Math.abs(rythmValueX)+Math.abs(rythmValueY)+Math.abs(rythmValueA) )/3;
+		rythmValueGeneral=( Math.abs(rythmValueX)+Math.abs(rythmValueY)+Math.abs(rythmValueA) );
 		return rythmValueGeneral;
 	}
 	
