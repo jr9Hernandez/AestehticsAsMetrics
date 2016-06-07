@@ -51,7 +51,7 @@ public class Rythm extends Metrics  {
 		System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral+" level.getxExit() "+level.getxExit());
 		
 		double rythmValueGeneral=99999999;
-		for(int i=1;i<30;i++)
+		for(int i=0;i<30;i++)
 		{
 		double rythmValueGeneralp=Rythm1Areas(elementsSelected, i, yCenterMassGeneral);
 		if(rythmValueGeneralp<rythmValueGeneral)
