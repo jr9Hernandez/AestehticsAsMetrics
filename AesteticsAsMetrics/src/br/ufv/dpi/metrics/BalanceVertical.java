@@ -34,11 +34,20 @@ public class BalanceVertical extends Metrics  {
 		//xCenterMassGeneral=objCenterOfMass.getX();
 		//yCenterMassGeneral=objCenterOfMass.getY();
 		xCenterMassGeneral=level.getxExit()/2;
-		yCenterMassGeneral=5;
+		yCenterMassGeneral=6;
 		
 		//calculation of Balance
 		//System.out.println("x "+xCenterMassGeneral+" y "+yCenterMassGeneral);
-		double symmetryValue=Balance(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
+		double symmetryValue=99999999;
+		
+		for(int i=0;i<30;i++)
+		{
+			double symmetryValueP=Balance(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
+			if(symmetryValueP<symmetryValue)
+			{
+				symmetryValue=symmetryValueP;
+			}
+		}
 		//System.out.println("Symmetry "+symmetryValue);
 		
 		//testing the captured elements

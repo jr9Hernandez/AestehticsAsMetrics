@@ -39,7 +39,20 @@ public class Equilibrium extends Metrics  {
 		
 		System.out.println("xCenterMassGeneralEqu "+xCenterMassGeneral);
 		System.out.println("yCenterMassGeneralEqu "+yCenterMassGeneral);
-		double xEquilibrium=Math.abs(xCenterMassGeneral-(level.getxExit()/2));
+		
+		
+		
+		double xEquilibrium=99999999;
+		
+		for(int i=0;i<30;i++)
+		{
+			double xEquilibriumP=Math.abs(xCenterMassGeneral-i);
+			if(xEquilibriumP<xEquilibrium)
+			{
+				xEquilibrium=xEquilibriumP;
+			}
+		}
+		
 		double yEquilibrium=Math.abs(yCenterMassGeneral-6);
 		
 		double equilibriumValue=xEquilibrium+yEquilibrium;
