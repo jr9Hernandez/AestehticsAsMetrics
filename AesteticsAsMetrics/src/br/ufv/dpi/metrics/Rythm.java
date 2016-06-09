@@ -502,15 +502,15 @@ public class Rythm extends Metrics  {
 		System.out.println("gurAT "+gurATG[0]+" "+gurATG[1]+" "+gurATG[2]+" "+gurATG[3]);
 		System.out.println("gllAT "+gllATG[0]+" "+gllATG[1]+" "+gllATG[2]+" "+gllATG[3]);
 		System.out.println("glrAT "+glrATG[0]+" "+glrATG[1]+" "+glrATG[2]+" "+glrATG[3]);
-		rythmValueX=SubstractionRythm(gulATG,gurATG,0)+SubstractionRythm(gllATG,glrATG,0);
+		rythmValueX=SubstractionRythm(gulATG,gllATG,0)+SubstractionRythm(gurATG,glrATG,0)+SubstractionRythm(gulATG,gurATG,0)+SubstractionRythm(gllATG,glrATG,0)+SubstractionRythm(gulATG,glrATG,0)+SubstractionRythm(gurATG,gllATG,0);
 		rythmValueX=rythmValueX/states.size();
 		System.out.println("rythmValueX "+rythmValueX);
 		
-		rythmValueY=SubstractionRythm(gulATG,gurATG,1)+SubstractionRythm(gllATG,glrATG,1);
+		rythmValueY=SubstractionRythm(gulATG,gllATG,1)+SubstractionRythm(gurATG,glrATG,1)+SubstractionRythm(gulATG,gurATG,1)+SubstractionRythm(gllATG,glrATG,1)+SubstractionRythm(gulATG,glrATG,1)+SubstractionRythm(gurATG,gllATG,1);
 		rythmValueY=rythmValueY/states.size();
 		System.out.println("rythmValueY "+rythmValueY);
 		
-		rythmValueA=SubstractionRythm(gulATG,gurATG,2)+SubstractionRythm(gllATG,glrATG,2);
+		rythmValueA=SubstractionRythm(gulATG,gllATG,2)+SubstractionRythm(gurATG,glrATG,2)+SubstractionRythm(gulATG,gurATG,2)+SubstractionRythm(gllATG,glrATG,2)+SubstractionRythm(gulATG,glrATG,2)+SubstractionRythm(gurATG,gllATG,2);
 		rythmValueA=rythmValueA/(gulATG[2]+gurATG[2]+gllATG[2]+glrATG[2]);
 		System.out.println("rythmValueA "+rythmValueA);
 		//symmetryValueGeneral=SubstractionSymmetries(gulATG,gurATG)+SubstractionSymmetries(gllATG,glrATG);
