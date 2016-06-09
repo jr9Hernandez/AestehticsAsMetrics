@@ -342,23 +342,36 @@ public class ScanLabeledLevel {
 		int begginingx=0;
 		int endx=0;
 		boolean current=false;
+		boolean flagGap=false;
+		
 		for (int i = 0; i < level.getxExit(); i++) {
 			
 			int limit=SearchforFloorReverse(i,((mapLevel[i].length) - 1));
 			if(limit==-1)
 			{
+				if(flagGap==false)
+				{
+					System.out.println("flaggg"+i);
+					endx=i-1;
+					buildElement(begginingx, (mapLevel[i].length)-1, ((mapLevel[i].length)-1)-beggining+1, endx-begginingx+1,30);
+					flagGap=true;	
+					current=false;
+				}
+				
 				continue;
 			}
-			if(limit!=beggining && current==false)
+			if(current==false)
 			{
+				flagGap=false;
 				current=true;
 				beggining=limit;
 				begginingx=i;
 
 				
 			}
-			if((limit!=beggining && current==true) )
+			if((limit!=beggining && current==true) || (i==(level.getxExit()-1)))
 			{
+				flagGap=false;
 				endx=i-1;
 				buildElement(begginingx, (mapLevel[i].length)-1, ((mapLevel[i].length)-1)-beggining+1, endx-begginingx+1,30);
 				beggining=limit;

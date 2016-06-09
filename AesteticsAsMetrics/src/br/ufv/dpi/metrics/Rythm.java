@@ -53,7 +53,7 @@ public class Rythm extends Metrics  {
 		double rythmValueGeneral=99999999;
 		for(int i=0;i<30;i++)
 		{
-		double rythmValueGeneralp=Rythm1Areas(elementsSelected, i, yCenterMassGeneral);
+		double rythmValueGeneralp=Rythm1Areas(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
 		if(rythmValueGeneralp<rythmValueGeneral)
 		{
 			rythmValueGeneral=rythmValueGeneralp;
