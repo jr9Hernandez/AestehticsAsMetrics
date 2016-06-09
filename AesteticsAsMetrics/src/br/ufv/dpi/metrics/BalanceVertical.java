@@ -42,7 +42,7 @@ public class BalanceVertical extends Metrics  {
 		
 		for(int i=0;i<30;i++)
 		{
-			double symmetryValueP=Balance(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
+			double symmetryValueP=Balance(elementsSelected, i, yCenterMassGeneral);
 			if(symmetryValueP<symmetryValue)
 			{
 				symmetryValue=symmetryValueP;
