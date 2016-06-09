@@ -336,6 +336,38 @@ public class ScanLabeledLevel {
 				
 			}
 		}
+		
+		//looking for floor elements
+		int beggining=-2;
+		int begginingx=0;
+		int endx=0;
+		boolean current=false;
+		for (int i = 0; i < level.getxExit(); i++) {
+			
+			int limit=SearchforFloorReverse(i,((mapLevel[i].length) - 1));
+			if(limit==-1)
+			{
+				continue;
+			}
+			if(limit!=beggining && current==false)
+			{
+				current=true;
+				beggining=limit;
+				begginingx=i;
+
+				
+			}
+			if((limit!=beggining && current==true) )
+			{
+				endx=i-1;
+				buildElement(begginingx, (mapLevel[i].length)-1, ((mapLevel[i].length)-1)-beggining+1, endx-begginingx+1,30);
+				beggining=limit;
+				begginingx=i;
+				
+				
+			}
+		}
+		
 		return elementsSelected;
 	}
 	public int SearchforFloorFloatMountain(int iInitial,int jInitial)
