@@ -40,6 +40,7 @@ public class ScanLabeledLevel {
     protected static final byte TUBE_SIDE_LEFT = (byte) (10 + 1 * 16);
     protected static final byte TUBE_SIDE_RIGHT = (byte) (11 + 1 * 16);
 	
+    protected int begin;
 	protected int width;
 	protected int height;
 	protected Level level;
@@ -48,8 +49,9 @@ public class ScanLabeledLevel {
 	private int counterGral;
 	private int[][]hotZoneElements;
 
-	public ScanLabeledLevel(Level level, int width, int height)
+	public ScanLabeledLevel(int begin, Level level, int width, int height)
 	{
+		this.begin=begin;
 		this.level=level;
 		this.width=width;
 		this.height=height;
@@ -69,7 +71,7 @@ public class ScanLabeledLevel {
 		int lastYBlueBlocks=0;
 		int lastYBrownBlocks=0;
 		
-		for (int i = 0; i < width; i++) {
+		for (int i = begin-9; i < begin+width; i++) {
 			int counterHills = 0;
 			
 			for (int j = 0; j < mapLevel[i].length; j++) {
@@ -82,7 +84,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] == (byte) (11 + 0 * 16) )
 						{
@@ -109,7 +111,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] == (byte) (14 + 0 * 16) )
 						{
@@ -134,7 +136,7 @@ public class ScanLabeledLevel {
 				//case of a gap!
 				if ((j == (mapLevel[i].length) - 1) && (mapLevel[i][j] == (byte) (0)) && i>limitGap) {
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] != (byte) (0) )
 						{
@@ -158,7 +160,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] == HILL_TOP_RIGHT_IN || mapLevel[k][j] ==HILL_TOP_RIGHT)
 						{
@@ -180,7 +182,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] == HILL_TOP_RIGHT_IN || mapLevel[k][j] ==HILL_TOP_RIGHT)
 						{
@@ -204,7 +206,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] == (byte) (2+8*16))
 						{
@@ -225,7 +227,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] != BLOCK_POWERUP && mapLevel[k][j] != BLOCK_COIN && mapLevel[k][j] != (byte) (2 + 1 * 16) && mapLevel[k][j] != (byte) (1 + 1 * 16) && mapLevel[k][j] != (byte) (0 + 1 * 16))
 						{
@@ -248,7 +250,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] != (byte) 28)
 						{
@@ -271,7 +273,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < width; k++)
+					for (int k = i; k < begin+width; k++)
 					{
 						if(mapLevel[k][j] != (byte) 12)
 						{

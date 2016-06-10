@@ -28,7 +28,7 @@ public class Reacheability extends Metrics {
 	public double compute() {
 
 		// calculation of scanning of level
-		ScanLabeledLevel objScanLevel = new ScanLabeledLevel(level, width,height);
+		ScanLabeledLevel objScanLevel=new ScanLabeledLevel(0,level,20, height );
 		elementsSelected = objScanLevel.DeterminePositions();
 		hotZoneElements=objScanLevel.hotZones(elementsSelected);
 
