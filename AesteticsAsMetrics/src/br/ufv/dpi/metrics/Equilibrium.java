@@ -28,7 +28,7 @@ public class Equilibrium extends Metrics  {
 		//calculation of scanning of level
 		double xEquilibrium=99999999;
 
-		for(int i=0;i<30;i++)
+		for(int i=10;i<30;i++)
 		{
 
 			ScanLabeledLevel objScanLevel=new ScanLabeledLevel(i,level,20, height );

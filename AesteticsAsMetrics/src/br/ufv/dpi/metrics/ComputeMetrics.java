@@ -60,16 +60,16 @@ public class ComputeMetrics {
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
-			symmetryValues.add(symmetry.compute());
-			numobjectsValues.add(numobjects.compute());
-			balanceValues.add(balance.compute());
-			equilibriumValues.add(equilibrium.compute());
-			reacheabilityValues.add(reacheability.compute());
-			rulethirdsValues.add(rulethirds.compute());
-			symmetryVerticalValues.add(symmetryvertical.compute());
-			balanceVerticalValues.add(balancevertical.compute());
-			balanceHorizontalValues.add(balancehorizontal.compute());
-			unityValues.add(unity.compute());
+			//symmetryValues.add(symmetry.compute());
+			//numobjectsValues.add(numobjects.compute());
+			//balanceValues.add(balance.compute());
+			//equilibriumValues.add(equilibrium.compute());
+			//reacheabilityValues.add(reacheability.compute());
+			//rulethirdsValues.add(rulethirds.compute());
+			//symmetryVerticalValues.add(symmetryvertical.compute());
+			//balanceVerticalValues.add(balancevertical.compute());
+			//balanceHorizontalValues.add(balancehorizontal.compute());
+			//unityValues.add(unity.compute());
 			rythmValues.add(rythm.compute());
 			
 		//}
@@ -123,16 +123,16 @@ public class ComputeMetrics {
 			leniencyValues.add(leniency.compute());
 			linearityValues.add(linearity.compute());
 			densityValues.add(density.compute());
-			symmetryValues.add(symmetry.compute());
-			numobjectsValues.add(numobjects.compute());
-			balanceValues.add(balance.compute());
-			equilibriumValues.add(equilibrium.compute());
-			reacheabilityValues.add(reacheability.compute());
-			rulethirdsValues.add(rulethirds.compute());
-			symmetryVerticalValues.add(symmetryvertical.compute());
-			balanceVerticalValues.add(balancevertical.compute());
-			balanceHorizontalValues.add(balancehorizontal.compute());
-			unityValues.add(unity.compute());
+			//symmetryValues.add(symmetry.compute());
+			//numobjectsValues.add(numobjects.compute());
+			//balanceValues.add(balance.compute());
+			//equilibriumValues.add(equilibrium.compute());
+			//reacheabilityValues.add(reacheability.compute());
+			//rulethirdsValues.add(rulethirds.compute());
+			//symmetryVerticalValues.add(symmetryvertical.compute());
+			//balanceVerticalValues.add(balancevertical.compute());
+			//balanceHorizontalValues.add(balancehorizontal.compute());
+			//unityValues.add(unity.compute());
 			rythmValues.add(rythm.compute());
 		}
 		

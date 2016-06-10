@@ -41,19 +41,7 @@ public class Symmetry extends Metrics  {
 		double symmetryValue=symettry1(elementsSelected, xCenterMassGeneral, yCenterMassGeneral);
 		//System.out.println("Symmetry "+symmetryValue);
 		
-		//testing the captured elements
-		Iterator<BlockNode> it = elementsSelected.iterator();
-		while(it.hasNext()){
-			BlockNode elemento = it.next();
-			
-			int xInitial = elemento.getX();
-	        int yInitial= elemento.getY();
-	        int widthElement=(elemento.getElement()).getWidth();
-	        int heigthElement=(elemento.getElement()).getHeigth();
-	        int typeElement=(elemento.getElement()).getTypeElem();
-	        
-	        System.out.println("type "+typeElement+" x "+xInitial+" y "+yInitial+" widthElement "+widthElement+ " heigthElement "+heigthElement);
-		}
+
 		return symmetryValue;
 	}
 	

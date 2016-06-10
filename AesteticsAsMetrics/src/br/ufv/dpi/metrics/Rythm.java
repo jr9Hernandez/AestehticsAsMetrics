@@ -34,8 +34,9 @@ public class Rythm extends Metrics  {
 
 		//calculation of scanning of level
 		double rythmValueGeneral=99999999;
-		for(int i=8;i<30;i++)
+		for(int i=10;i<30;i++)
 		{
+			System.out.println("iteration "+i);
 			ScanLabeledLevel objScanLevel=new ScanLabeledLevel(i,level,20, height );
 			elementsSelected=objScanLevel.DeterminePositions();
 
@@ -58,21 +59,22 @@ public class Rythm extends Metrics  {
 			{
 				rythmValueGeneral=rythmValueGeneralp;
 			}
+			//testing the captured elements
+			Iterator<BlockNode> it = elementsSelected.iterator();
+			while(it.hasNext()){
+				BlockNode elemento = it.next();
+
+				int xInitial = elemento.getX();
+		        int yInitial= elemento.getY();
+		        int widthElement=(elemento.getElement()).getWidth();
+		        int heigthElement=(elemento.getElement()).getHeigth();
+		        int typeElement=(elemento.getElement()).getTypeElem();
+
+		        System.out.println("typeR "+typeElement+" x "+xInitial+" y "+yInitial+" widthElement "+widthElement+ " heigthElement "+heigthElement);
+			}
 		}
 
-		//testing the captured elements
-		/*Iterator<BlockNode> it = elementsSelected.iterator();
-		while(it.hasNext()){
-			BlockNode elemento = it.next();
 
-			int xInitial = elemento.getX();
-	        int yInitial= elemento.getY();
-	        int widthElement=(elemento.getElement()).getWidth();
-	        int heigthElement=(elemento.getElement()).getHeigth();
-	        int typeElement=(elemento.getElement()).getTypeElem();
-
-	        System.out.println("type "+typeElement+" x "+xInitial+" y "+yInitial+" widthElement "+widthElement+ " heigthElement "+heigthElement);
-		}*/
 		return rythmValueGeneral;
 	}
 

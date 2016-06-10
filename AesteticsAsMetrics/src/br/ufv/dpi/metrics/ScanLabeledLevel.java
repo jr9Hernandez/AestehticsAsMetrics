@@ -70,12 +70,13 @@ public class ScanLabeledLevel {
 		int lastYBlocks=0;
 		int lastYBlueBlocks=0;
 		int lastYBrownBlocks=0;
-		
-		for (int i = begin-9; i < begin+width; i++) {
+		System.out.println("elbeginaso"+begin);
+		for (int i = begin-10; i < begin+10; i++) {
 			int counterHills = 0;
 			
 			for (int j = 0; j < mapLevel[i].length; j++) {
 
+				boolean restarting=false;
 				int widthElement=0;
 				int heightElement=0;
 				
@@ -84,7 +85,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
 						if(mapLevel[k][j] == (byte) (11 + 0 * 16) )
 						{
@@ -111,7 +112,7 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
 						if(mapLevel[k][j] == (byte) (14 + 0 * 16) )
 						{
@@ -136,13 +137,23 @@ public class ScanLabeledLevel {
 				//case of a gap!
 				if ((j == (mapLevel[i].length) - 1) && (mapLevel[i][j] == (byte) (0)) && i>limitGap) {
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
-						if(mapLevel[k][j] != (byte) (0) )
+						if(mapLevel[k][j] != (byte) (0) || k==begin+9)
 						{
 							
+							
+							if(k==begin+9 && mapLevel[k][j] == (byte) (0))
+							{
+								limitGap=k;
+								widthElement=k-i+1;	
+								break;
+							}
+							else
+							{
 							limitGap=k-1;
 							widthElement=k-i;
+							}
 							break;
 						}
 
@@ -156,13 +167,14 @@ public class ScanLabeledLevel {
 				}
 				
 				//case of an external Hill!
-				if(mapLevel[i][j] == HILL_TOP_LEFT)
+				if(mapLevel[i][j] == HILL_TOP_LEFT || (mapLevel[i][j] == HILL_TOP && i==begin-10) || ((mapLevel[i][j] == HILL_TOP_RIGHT_IN || mapLevel[i][j] ==HILL_TOP_RIGHT) && i==begin-10))
 				{
+					restarting=true;
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
-						if(mapLevel[k][j] == HILL_TOP_RIGHT_IN || mapLevel[k][j] ==HILL_TOP_RIGHT)
+						if(mapLevel[k][j] == HILL_TOP_RIGHT_IN || mapLevel[k][j] ==HILL_TOP_RIGHT || k==begin+9)
 						{
 							widthElement=k-i+1;
 							break;
@@ -178,13 +190,14 @@ public class ScanLabeledLevel {
 				}
 				
 				//case of an internal Hill!
-				if(mapLevel[i][j] == HILL_TOP_LEFT_IN)
+				if((mapLevel[i][j] == HILL_TOP_LEFT_IN || (mapLevel[i][j] == HILL_TOP && i==begin-10) || ((mapLevel[i][j] == HILL_TOP_RIGHT_IN || mapLevel[i][j] ==HILL_TOP_RIGHT) && i==begin-10)) && restarting==false)
 				{
+					restarting=true;
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
-						if(mapLevel[k][j] == HILL_TOP_RIGHT_IN || mapLevel[k][j] ==HILL_TOP_RIGHT)
+						if(mapLevel[k][j] == HILL_TOP_RIGHT_IN || mapLevel[k][j] ==HILL_TOP_RIGHT || k==begin+9)
 						{
 							widthElement=k-i+1;
 							break;
@@ -202,14 +215,15 @@ public class ScanLabeledLevel {
 				}
 				
 				//case of an floating Hill!
-				if(mapLevel[i][j] == (byte) (0+8*16) && SearchforFloorReverse(i,(mapLevel[i].length) - 1)!= j)
+				if((((mapLevel[i][j] == (byte) (0+8*16))|| (mapLevel[i][j] == HILL_TOP && i==begin-10) || (mapLevel[i][j] == (byte) (2+8*16) && i==begin-10))  && SearchforFloorReverse(i,(mapLevel[i].length) - 1)!= j)&& restarting==false)
 				{
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
-						if(mapLevel[k][j] == (byte) (2+8*16))
+						if(mapLevel[k][j] == (byte) (2+8*16) || k==begin+9)
 						{
+
 							widthElement=k-i+1;
 							break;
 						}
@@ -227,13 +241,24 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
-						if(mapLevel[k][j] != BLOCK_POWERUP && mapLevel[k][j] != BLOCK_COIN && mapLevel[k][j] != (byte) (2 + 1 * 16) && mapLevel[k][j] != (byte) (1 + 1 * 16) && mapLevel[k][j] != (byte) (0 + 1 * 16))
+						if((mapLevel[k][j] != BLOCK_POWERUP && mapLevel[k][j] != BLOCK_COIN && mapLevel[k][j] != (byte) (2 + 1 * 16) && mapLevel[k][j] != (byte) (1 + 1 * 16) && mapLevel[k][j] != (byte) (0 + 1 * 16)) || k==begin+9)
 						{
-							lastYBlocks=j;
-							limitBlocks=k-1;
-							widthElement=k-i;
+							
+							if(k==begin+9 && (mapLevel[k][j] == BLOCK_POWERUP || mapLevel[k][j] == BLOCK_COIN || mapLevel[k][j] == (byte) (2 + 1 * 16) || mapLevel[k][j] == (byte) (1 + 1 * 16) || mapLevel[k][j] == (byte) (0 + 1 * 16)))
+							{
+								lastYBlocks=j;
+								widthElement=k-i+1;
+								limitBlocks=k;
+								break;
+							}
+							else
+							{
+								lastYBlocks=j;
+								limitBlocks=k-1;
+								widthElement=k-i;
+							}
 							break;
 						}
 
@@ -250,13 +275,23 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
-						if(mapLevel[k][j] != (byte) 28)
+						if(mapLevel[k][j] != (byte) 28 || k==begin+9)
 						{
-							lastYBlueBlocks=j;
-							limitBlueBlocks=k-1;
-							widthElement=k-i;
+							if(k==begin+9)
+							{
+								lastYBlocks=j;
+								widthElement=k-i+1;
+								limitBlocks=k;
+								break;
+							}
+							else
+							{
+								lastYBlocks=j;
+								limitBlocks=k-1;
+								widthElement=k-i;
+							}
 							break;
 						}
 
@@ -273,13 +308,23 @@ public class ScanLabeledLevel {
 				{
 					//calculating the width
 					
-					for (int k = i; k < begin+width; k++)
+					for (int k = i; k < begin+10; k++)
 					{
-						if(mapLevel[k][j] != (byte) 12)
+						if(mapLevel[k][j] != (byte) 12 || k==begin+9)
 						{
-							lastYBrownBlocks=j;
-							limitBrownBlocks=k-1;
-							widthElement=k-i;
+							if(k==begin+9)
+							{
+								lastYBlocks=j;
+								widthElement=k-i+1;
+								limitBlocks=k;
+								break;
+							}
+							else
+							{
+								lastYBlocks=j;
+								limitBlocks=k-1;
+								widthElement=k-i;
+							}
 							break;
 						}
 
@@ -346,7 +391,7 @@ public class ScanLabeledLevel {
 		boolean current=false;
 		boolean flagGap=false;
 		
-		for (int i = 0; i < level.getxExit(); i++) {
+		for (int i = begin-10; i < begin+10; i++) {
 			
 			int limit=SearchforFloorReverse(i,((mapLevel[i].length) - 1));
 			if(limit==-1)
@@ -368,18 +413,42 @@ public class ScanLabeledLevel {
 				current=true;
 				beggining=limit;
 				begginingx=i;
+				
+				if(i==begin+9)
+				{
+					buildElement(begginingx, (mapLevel[i].length)-1, ((mapLevel[i].length)-1)-beggining+1, 1,30);
+					break;
+				}
 
 				
 			}
-			if((limit!=beggining && current==true) || (i==(level.getxExit()-1)))
+			if(((limit!=beggining || i==begin+9) && current==true))
 			{
+				if(i==begin+9 && limit!=beggining)
+				{
+					flagGap=false;
+					endx=i-1;
+					buildElement(begginingx, (mapLevel[i].length)-1, ((mapLevel[i].length)-1)-beggining+1, endx-begginingx+1,30);
+					beggining=limit;
+					begginingx=i;
+					buildElement(begginingx, (mapLevel[i].length)-1, ((mapLevel[i].length)-1)-beggining+1,1,30);
+				}
+				else
+				{
 				flagGap=false;
-				endx=i-1;
+				if(i==begin+9)
+				{
+					endx=i;
+				}
+				else
+				{
+					endx=i-1;	
+				}
+				
 				buildElement(begginingx, (mapLevel[i].length)-1, ((mapLevel[i].length)-1)-beggining+1, endx-begginingx+1,30);
 				beggining=limit;
 				begginingx=i;
-				
-				
+				}
 			}
 		}
 		
