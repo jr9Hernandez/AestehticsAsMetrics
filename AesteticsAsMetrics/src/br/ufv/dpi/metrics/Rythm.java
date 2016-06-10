@@ -34,7 +34,7 @@ public class Rythm extends Metrics  {
 
 		//calculation of scanning of level
 		double rythmValueGeneral=99999999;
-		for(int i=15;i<25;i++)
+		for(int i=10;i<25;i++)
 		{
 			System.out.println("iteration "+i);
 			ScanLabeledLevel objScanLevel=new ScanLabeledLevel(i,level,20, height );
